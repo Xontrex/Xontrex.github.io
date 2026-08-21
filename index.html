@@ -4,108 +4,472 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Xontrex</title>
+    <title>Xontrex | Asesoría Digital y Marketing</title>
 
     <style>
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: #07152d;
             color: white;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            line-height: 1.6;
         }
 
         .contenedor {
             width: 90%;
-            max-width: 700px;
-            padding: 40px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        /* INICIO */
+
+        .inicio {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .inicio-contenido {
+            max-width: 850px;
         }
 
         .logo {
-            font-size: 55px;
+            font-size: clamp(48px, 10vw, 85px);
             font-weight: 900;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
         }
 
-        .subtitulo {
+        .linea {
+            width: 70px;
+            height: 3px;
+            background: white;
+            margin: 0 auto 30px;
+        }
+
+        .inicio h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .inicio p {
             color: #b9c3d4;
-            font-size: 18px;
-            margin-bottom: 35px;
+            font-size: 19px;
+            max-width: 700px;
+            margin: auto;
         }
 
-        .descripcion {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #e5e9f0;
+        .flecha {
+            margin-top: 60px;
+            font-size: 30px;
+            opacity: 0.7;
+            animation: bajar 2s infinite;
+        }
+
+        @keyframes bajar {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(10px);
+            }
+        }
+
+        /* SECCIONES */
+
+        section {
+            padding: 100px 20px;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .titulo-seccion::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 3px;
+            background: white;
+            margin: 15px auto 0;
+        }
+
+        /* MISION Y VISION */
+
+        .dos-columnas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .tarjeta {
+            background: #0c1d3b;
+            border: 1px solid #ffffff15;
+            border-radius: 18px;
+            padding: 40px;
+            transition: 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-6px);
+            border-color: #ffffff40;
+        }
+
+        .tarjeta h3 {
+            font-size: 27px;
+            margin-bottom: 18px;
+        }
+
+        .tarjeta p {
+            color: #b9c3d4;
+            font-size: 17px;
+        }
+
+        /* VALORES */
+
+        .valores {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .valor {
+            background: #0c1d3b;
+            border: 1px solid #ffffff15;
+            border-radius: 16px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .valor:hover {
+            transform: translateY(-5px);
+        }
+
+        .valor h3 {
+            margin-bottom: 10px;
+            font-size: 21px;
+        }
+
+        .valor p {
+            color: #aeb9cc;
+            font-size: 15px;
+        }
+
+        /* REDES */
+
+        .redes {
+            text-align: center;
+        }
+
+        .redes p {
+            color: #b9c3d4;
             margin-bottom: 35px;
+            font-size: 17px;
         }
 
         .botones {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 20px;
             flex-wrap: wrap;
         }
 
         .boton {
+            display: inline-block;
             text-decoration: none;
             color: white;
-            border: 1px solid #ffffff55;
-            padding: 14px 25px;
+            border: 1px solid #ffffff40;
+            padding: 14px 30px;
             border-radius: 30px;
+            font-size: 16px;
             transition: 0.3s;
         }
 
         .boton:hover {
             background: white;
             color: #07152d;
+            transform: translateY(-3px);
         }
 
+        /* FOOTER */
+
         footer {
-            margin-top: 50px;
+            border-top: 1px solid #ffffff15;
+            text-align: center;
+            padding: 30px 20px;
             color: #7f8ba0;
-            font-size: 13px;
+            font-size: 14px;
+        }
+
+        /* CELULARES */
+
+        @media (max-width: 750px) {
+
+            .dos-columnas {
+                grid-template-columns: 1fr;
+            }
+
+            .valores {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 70px 20px;
+            }
+
+            .tarjeta {
+                padding: 30px;
+            }
+
+            .logo {
+                letter-spacing: 5px;
+            }
         }
     </style>
 </head>
 
 <body>
 
-    <main class="contenedor">
+    <!-- INICIO -->
 
-        <div class="logo">XONTREX</div>
+    <header class="inicio">
 
-        <div class="subtitulo">
-            Phrases • Memes • Culture
+        <div class="inicio-contenido">
+
+            <div class="logo">
+                XONTREX
+            </div>
+
+            <div class="linea"></div>
+
+            <h1>
+                Asesoría digital y marketing
+                para tiendas y restaurantes
+            </h1>
+
+            <p>
+                Ayudamos a negocios a aprovechar el mundo digital,
+                mejorar su presencia y conectar con sus clientes.
+            </p>
+
+            <div class="flecha">
+                ↓
+            </div>
+
         </div>
 
-        <p class="descripcion">
-            Bienvenido a Xontrex.
-            Un espacio creado para compartir contenido,
-            ideas y momentos que conectan con una nueva generación.
-        </p>
+    </header>
 
-        <div class="botones">
-            <a class="boton" href="#">TikTok</a>
-            <a class="boton" href="#">Instagram</a>
-            <a class="boton" href="#">YouTube</a>
+
+    <!-- MISION Y VISION -->
+
+    <section>
+
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Lo que nos mueve
+            </h2>
+
+            <div class="dos-columnas">
+
+                <div class="tarjeta">
+
+                    <h3>
+                        Nuestra misión
+                    </h3>
+
+                    <p>
+                        Ayudar a tiendas, restaurantes y empresas a
+                        aprovechar las herramientas digitales para
+                        mejorar su presencia, conectar con sus clientes
+                        y hacer crecer sus negocios mediante soluciones
+                        prácticas, creativas y efectivas.
+                    </p>
+
+                </div>
+
+
+                <div class="tarjeta">
+
+                    <h3>
+                        Nuestra visión
+                    </h3>
+
+                    <p>
+                        Convertirnos en una referencia en asesoría digital
+                        y marketing para negocios, impulsando su crecimiento
+                        a través de estrategias innovadoras, tecnología y
+                        soluciones adaptadas a las necesidades de cada cliente.
+                    </p>
+
+                </div>
+
+            </div>
+
         </div>
 
-        <footer>
-            © 2026 Xontrex. Todos los derechos reservados.
-        </footer>
+    </section>
 
-    </main>
+
+    <!-- VALORES -->
+
+    <section>
+
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Nuestros valores
+            </h2>
+
+            <div class="valores">
+
+                <div class="valor">
+
+                    <h3>
+                        Confianza
+                    </h3>
+
+                    <p>
+                        Construimos relaciones basadas en la transparencia,
+                        el respeto y la comunicación.
+                    </p>
+
+                </div>
+
+
+                <div class="valor">
+
+                    <h3>
+                        Responsabilidad
+                    </h3>
+
+                    <p>
+                        Cumplimos nuestros compromisos y asumimos cada
+                        proyecto con seriedad.
+                    </p>
+
+                </div>
+
+
+                <div class="valor">
+
+                    <h3>
+                        Innovación
+                    </h3>
+
+                    <p>
+                        Buscamos nuevas ideas y herramientas para encontrar
+                        mejores oportunidades para cada negocio.
+                    </p>
+
+                </div>
+
+
+                <div class="valor">
+
+                    <h3>
+                        Creatividad
+                    </h3>
+
+                    <p>
+                        Convertimos ideas en estrategias capaces de conectar
+                        marcas con personas.
+                    </p>
+
+                </div>
+
+
+                <div class="valor">
+
+                    <h3>
+                        Compromiso
+                    </h3>
+
+                    <p>
+                        Trabajamos para aportar soluciones que generen
+                        verdadero valor a nuestros clientes.
+                    </p>
+
+                </div>
+
+
+                <div class="valor">
+
+                    <h3>
+                        Excelencia
+                    </h3>
+
+                    <p>
+                        Buscamos mejorar continuamente la calidad de nuestro
+                        trabajo y la experiencia de nuestros clientes.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- REDES SOCIALES -->
+
+    <section class="redes">
+
+        <div class="contenedor">
+
+            <h2 class="titulo-seccion">
+                Conecta con Xontrex
+            </h2>
+
+            <p>
+                Síguenos en nuestras redes sociales.
+            </p>
+
+            <div class="botones">
+
+                <!-- Aquí colocaremos los enlaces posteriormente -->
+
+                <a href="#" class="boton">
+                    Instagram
+                </a>
+
+                <a href="#" class="boton">
+                    TikTok
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PIE DE PAGINA -->
+
+    <footer>
+
+        © 2026 Xontrex. Todos los derechos reservados.
+
+    </footer>
 
 </body>
 </html>
