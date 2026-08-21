@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Servicios digitales y de marketing de Xontrex para tiendas, restaurantes y negocios.">
+
+    <title>Servicios | Xontrex</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #07152d;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            color: inherit;
+        }
+
+        .contenedor {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(7, 21, 45, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .nav-contenido {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 3px;
+            text-decoration: none;
+        }
+
+        .nav-enlace {
+            text-decoration: none;
+            color: #b9c3d4;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        .nav-enlace:hover {
+            color: #ffffff;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            padding: 125px 20px 110px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(52, 105, 190, 0.13);
+            filter: blur(100px);
+            border-radius: 50%;
+            top: -220px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .etiqueta {
+            display: inline-block;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.04);
+            padding: 8px 18px;
+            border-radius: 30px;
+            color: #c5cede;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 {
+            position: relative;
+            font-size: clamp(42px, 7vw, 75px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #9fb5d8;
+        }
+
+        .hero p {
+            position: relative;
+            max-width: 700px;
+            margin: auto;
+            color: #aeb9cc;
+            font-size: 19px;
+        }
+
+        /* =========================
+           SERVICIOS
+        ========================= */
+
+        .servicios {
+            padding: 90px 20px 120px;
+        }
+
+        .encabezado {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .encabezado h2 {
+            font-size: 38px;
+            margin-bottom: 12px;
+        }
+
+        .encabezado p {
+            color: #9da9bd;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .grid-servicios {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+        }
+
+        .servicio {
+            position: relative;
+            background: linear-gradient(
+                145deg,
+                #0d2142,
+                #0a1932
+            );
+
+            border: 1px solid rgba(255,255,255,0.09);
+            border-radius: 22px;
+            padding: 38px;
+            overflow: hidden;
+            transition: 0.35s;
+        }
+
+        .servicio::after {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(255,255,255,0.025);
+            border-radius: 50%;
+            right: -70px;
+            bottom: -70px;
+        }
+
+        .servicio:hover {
+            transform: translateY(-7px);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .numero {
+            color: #7185a5;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .servicio h3 {
+            font-size: 25px;
+            margin-bottom: 14px;
+        }
+
+        .servicio > p {
+            color: #aeb9cc;
+            font-size: 16px;
+            margin-bottom: 25px;
+        }
+
+        .incluye {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 20px;
+        }
+
+        .incluye h4 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #ffffff;
+            margin-bottom: 13px;
+        }
+
+        .incluye ul {
+            list-style: none;
+        }
+
+        .incluye li {
+            color: #aeb9cc;
+            font-size: 14px;
+            margin: 8px 0;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .incluye li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #ffffff;
+        }
+
+        /* =========================
+           CTA
+        ========================= */
+
+        .cta {
+            padding: 30px 20px 120px;
+        }
+
+        .cta-caja {
+            max-width: 1000px;
+            margin: auto;
+            padding: 65px 40px;
+            text-align: center;
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: linear-gradient(
+                135deg,
+                #10294f,
+                #0b1b36
+            );
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .cta p {
+            color: #aeb9cc;
+            max-width: 620px;
+            margin: 0 auto 30px;
+        }
+
+        .boton {
+            display: inline-block;
+            text-decoration: none;
+            background: #ffffff;
+            color: #07152d;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 30px 20px;
+            text-align: center;
+            color: #718096;
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 800px) {
+
+            .grid-servicios {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 90px;
+            }
+
+            .servicio {
+                padding: 30px;
+            }
+
+            .cta-caja {
+                padding: 50px 25px;
+            }
+
+        }
+
+        @media (max-width: 500px) {
+
+            .nav-enlace {
+                font-size: 13px;
+            }
+
+            .nav-logo {
+                font-size: 21px;
+            }
+
+            .hero h1 {
+                letter-spacing: -1px;
+            }
+
+            .encabezado h2,
+            .cta h2 {
+                font-size: 30px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- NAVEGACIÓN -->
+
+    <nav>
+
+        <div class="contenedor nav-contenido">
+
+            <a href="../" class="nav-logo">
+                XONTREX
+            </a>
+
+            <a href="../" class="nav-enlace">
+                ← Volver al inicio
+            </a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="contenedor">
+
+            <div class="etiqueta">
+                SOLUCIONES DIGITALES
+            </div>
+
+            <h1>
+                Servicios que hacen<br>
+                <span>crecer tu negocio.</span>
+            </h1>
+
+            <p>
+                En Xontrex ayudamos a tiendas, restaurantes y negocios
+                a construir, mejorar y mantener una presencia digital
+                profesional.
+            </p>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- SERVICIOS -->
+
+    <section class="servicios">
+
+        <div class="contenedor">
+
+            <div class="encabezado">
+
+                <h2>
+                    Nuestros servicios
+                </h2>
+
+                <p>
+                    Soluciones digitales pensadas para las necesidades
+                    reales de cada negocio.
+                </p>
+
+            </div>
+
+
+            <div class="grid-servicios">
+
+
+                <!-- SERVICIO 01 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        01 / REDES
+                    </div>
+
+                    <h3>
+                        Gestión de redes sociales
+                    </h3>
+
+                    <p>
+                        Mantenemos activa y organizada la presencia de tu
+                        negocio en plataformas como Instagram y TikTok.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Planificación de contenido</li>
+                            <li>Publicaciones y contenido para redes</li>
+                            <li>Reels y TikToks</li>
+                            <li>Historias</li>
+                            <li>Organización del contenido</li>
+                            <li>Estrategias para mejorar la presencia digital</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 02 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        02 / PERFILES
+                    </div>
+
+                    <h3>
+                        Gestión de perfiles
+                    </h3>
+
+                    <p>
+                        Mejoramos la presentación de tus perfiles para que
+                        los clientes encuentren rápidamente la información
+                        que necesitan.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Optimización de Instagram y TikTok</li>
+                            <li>Biografía y descripción</li>
+                            <li>Información de contacto</li>
+                            <li>Organización de enlaces</li>
+                            <li>Mejora de la imagen del perfil</li>
+                            <li>Integración con herramientas como Beacons</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 03 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        03 / CONTENIDO
+                    </div>
+
+                    <h3>
+                        Creación de contenido
+                    </h3>
+
+                    <p>
+                        Creamos contenido visual y audiovisual diseñado
+                        para mostrar los productos y conectar con los
+                        clientes.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Fotografía de productos</li>
+                            <li>Grabación de videos</li>
+                            <li>Reels y TikToks</li>
+                            <li>Historias</li>
+                            <li>Diseños para publicaciones</li>
+                            <li>Edición y adaptación para redes</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 04 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        04 / MENÚS
+                    </div>
+
+                    <h3>
+                        Menús digitales
+                    </h3>
+
+                    <p>
+                        Creamos menús digitales modernos, fáciles de usar
+                        y adaptados especialmente para dispositivos móviles.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Categorías de productos</li>
+                            <li>Precios y descripciones</li>
+                            <li>Fotografías</li>
+                            <li>Diseño adaptado a celulares</li>
+                            <li>URL personalizada</li>
+                            <li>Preparación para código QR</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 05 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        05 / MANTENIMIENTO
+                    </div>
+
+                    <h3>
+                        Mantenimiento mensual
+                    </h3>
+
+                    <p>
+                        Nos encargamos de mantener actualizada la información
+                        digital de tu negocio para que tú puedas concentrarte
+                        en atender a tus clientes.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Cambios de precios</li>
+                            <li>Agregar o eliminar productos</li>
+                            <li>Actualización de fotografías</li>
+                            <li>Cambios en categorías</li>
+                            <li>Actualización de información</li>
+                            <li>Mantenimiento de enlaces</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 06 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        06 / PUBLICIDAD
+                    </div>
+
+                    <h3>
+                        Publicidad digital
+                    </h3>
+
+                    <p>
+                        Ayudamos a los negocios a promocionar sus productos
+                        y servicios mediante campañas digitales.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Preparación de campañas</li>
+                            <li>Definición del público objetivo</li>
+                            <li>Adaptación de anuncios</li>
+                            <li>Configuración de campañas</li>
+                            <li>Seguimiento de resultados</li>
+                            <li>Recomendaciones de optimización</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 07 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        07 / PRESENCIA DIGITAL
+                    </div>
+
+                    <h3>
+                        Presencia digital
+                    </h3>
+
+                    <p>
+                        Organizamos los diferentes canales digitales de tu
+                        negocio para crear una experiencia más clara y
+                        profesional para tus clientes.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Instagram y TikTok</li>
+                            <li>Google</li>
+                            <li>WhatsApp</li>
+                            <li>Menú digital</li>
+                            <li>Beacons y enlaces</li>
+                            <li>Organización de información digital</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- SERVICIO 08 -->
+
+                <article class="servicio">
+
+                    <div class="numero">
+                        08 / GOOGLE
+                    </div>
+
+                    <h3>
+                        Optimización de Google Maps
+                    </h3>
+
+                    <p>
+                        Mejoramos y mantenemos la presencia del negocio
+                        en Google para facilitar que los clientes puedan
+                        encontrarlo.
+                    </p>
+
+                    <div class="incluye">
+
+                        <h4>
+                            Incluye
+                        </h4>
+
+                        <ul>
+                            <li>Optimización del Perfil de Empresa</li>
+                            <li>Información y horarios</li>
+                            <li>Categorías y descripción</li>
+                            <li>Fotografías</li>
+                            <li>Ubicación y datos de contacto</li>
+                            <li>Orientación sobre reseñas</li>
+                        </ul>
+
+                    </div>
+
+                </article>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CTA -->
+
+    <section class="cta">
+
+        <div class="cta-caja">
+
+            <h2>
+                ¿Listo para llevar tu negocio al mundo digital?
+            </h2>
+
+            <p>
+                Cuéntanos qué necesita tu negocio y encontraremos
+                una solución adaptada a tus objetivos.
+            </p>
+
+            <a href="../" class="boton">
+                Conocer Xontrex
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Xontrex. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
