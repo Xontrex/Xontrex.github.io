@@ -7,6 +7,7 @@
     <title>Xontrex | Asesoría Digital y Marketing</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +31,9 @@
             margin: auto;
         }
 
-        /* INICIO */
+        /* =========================
+           INICIO
+        ========================= */
 
         .inicio {
             min-height: 100vh;
@@ -72,24 +75,32 @@
             margin: auto;
         }
 
-        .flecha {
-            margin-top: 60px;
-            font-size: 30px;
-            opacity: 0.7;
-            animation: bajar 2s infinite;
+        /* =========================
+           BOTÓN DE SERVICIOS
+        ========================= */
+
+        .boton-servicios {
+            display: inline-block;
+            margin-top: 40px;
+            padding: 15px 30px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: bold;
+            transition: 0.3s;
         }
 
-        @keyframes bajar {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(10px);
-            }
+        .boton-servicios:hover {
+            background: white;
+            color: #07152d;
+            transform: translateY(-4px);
         }
 
-        /* SECCIONES */
+        /* =========================
+           SECCIONES
+        ========================= */
 
         section {
             padding: 100px 20px;
@@ -110,7 +121,9 @@
             margin: 15px auto 0;
         }
 
-        /* MISION Y VISION */
+        /* =========================
+           MISIÓN Y VISIÓN
+        ========================= */
 
         .dos-columnas {
             display: grid;
@@ -141,7 +154,9 @@
             font-size: 17px;
         }
 
-        /* VALORES */
+        /* =========================
+           VALORES
+        ========================= */
 
         .valores {
             display: grid;
@@ -171,7 +186,9 @@
             font-size: 15px;
         }
 
-        /* REDES */
+        /* =========================
+           REDES
+        ========================= */
 
         .redes {
             text-align: center;
@@ -207,7 +224,9 @@
             transform: translateY(-3px);
         }
 
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             border-top: 1px solid #ffffff15;
@@ -217,7 +236,9 @@
             font-size: 14px;
         }
 
-        /* CELULARES */
+        /* =========================
+           CELULARES
+        ========================= */
 
         @media (max-width: 750px) {
 
@@ -240,13 +261,18 @@
             .logo {
                 letter-spacing: 5px;
             }
+
         }
+
     </style>
 </head>
 
 <body>
 
-    <!-- INICIO -->
+
+    <!-- =========================
+         INICIO
+    ========================= -->
 
     <header class="inicio">
 
@@ -264,20 +290,23 @@
             </h1>
 
             <p>
-                Ayudamos a negocios a aprovechar el mundo digital,
-                mejorar su presencia y conectar con sus clientes.
+                Ayudamos a tiendas, restaurantes y empresas a
+                aprovechar las herramientas digitales para mejorar
+                su presencia y conectar con sus clientes.
             </p>
 
-            <div class="flecha">
-                ↓
-            </div>
+            <a href="servicios/" class="boton-servicios">
+                Ver nuestros servicios →
+            </a>
 
         </div>
 
     </header>
 
 
-    <!-- MISION Y VISION -->
+    <!-- =========================
+         MISIÓN Y VISIÓN
+    ========================= -->
 
     <section>
 
@@ -328,7 +357,9 @@
     </section>
 
 
-    <!-- VALORES -->
+    <!-- =========================
+         VALORES
+    ========================= -->
 
     <section>
 
@@ -430,7 +461,9 @@
     </section>
 
 
-    <!-- REDES SOCIALES -->
+    <!-- =========================
+         REDES SOCIALES
+    ========================= -->
 
     <section class="redes">
 
@@ -445,8 +478,6 @@
             </p>
 
             <div class="botones">
-
-                <!-- Aquí colocaremos los enlaces posteriormente -->
 
                 <a href="#" class="boton">
                     Instagram
@@ -463,13 +494,16 @@
     </section>
 
 
-    <!-- PIE DE PAGINA -->
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
         © 2026 Xontrex. Todos los derechos reservados.
 
     </footer>
+
 
 </body>
 </html>
