@@ -1,13 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Xontrex ofrece servicios digitales para ayudar a negocios a construir, organizar y mejorar su presencia en Internet.">
-
-    <title>Xontrex | Servicios Digitales</title>
+    <title>Xontrex | Soluciones digitales</title>
 
     <style>
 
@@ -15,982 +12,561 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #07152d;
+            background-color: #071a3d;
             color: white;
-            line-height: 1.6;
         }
 
-        .contenedor {
-            width: 90%;
-            max-width: 1100px;
-            margin: auto;
-        }
 
         /* =========================
-           INICIO
+           ENCABEZADO
         ========================= */
 
-        .inicio {
-            min-height: 100vh;
+        header {
+            background-color: #071a3d;
+            padding: 22px 8%;
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 60px 20px;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .inicio::before {
-            content: "";
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: rgba(52, 105, 190, 0.12);
-            filter: blur(100px);
-            border-radius: 50%;
-            top: -250px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .inicio-contenido {
-            max-width: 850px;
-            position: relative;
-        }
-
-        .etiqueta {
-            display: inline-block;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.04);
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: #c5cede;
-            font-size: 13px;
-            letter-spacing: 1px;
-            margin-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.12);
         }
 
         .logo {
-            font-size: clamp(48px, 10vw, 85px);
-            font-weight: 900;
-            letter-spacing: 8px;
-            margin-bottom: 20px;
+            color: white;
+            text-decoration: none;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
         }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #b8c8e6;
+        }
+
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 72vh;
+
+            background-color: #071a3d;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            text-align: center;
+
+            padding: 80px 20px;
+        }
+
+        .hero-contenido {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            letter-spacing: 4px;
+            margin-bottom: 15px;
+        }
+
+        .subtitulo {
+            font-size: 25px;
+            color: #dbe4f3;
+            margin-bottom: 25px;
+        }
+
+        .descripcion {
+            max-width: 720px;
+            margin: auto;
+
+            font-size: 19px;
+            line-height: 1.8;
+
+            color: #dbe4f3;
+        }
+
+
+        /* =========================
+           SEPARADOR
+        ========================= */
 
         .linea {
             width: 70px;
             height: 3px;
-            background: white;
-            margin: 0 auto 30px;
+
+            background-color: white;
+
+            margin: 30px auto;
         }
 
-        .inicio h1 {
-            font-size: clamp(30px, 5vw, 52px);
-            line-height: 1.15;
-            margin-bottom: 22px;
-        }
-
-        .inicio h1 span {
-            color: #9fb5d8;
-        }
-
-        .inicio p {
-            color: #b9c3d4;
-            font-size: 19px;
-            max-width: 720px;
-            margin: auto;
-        }
-
-        .botones-inicio {
-            margin-top: 38px;
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .boton-principal, 
-        .boton-secundario { 
-            display: inline-block;
-            padding: 14px 28px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .boton-principal {
-            background: white;
-            color: #07152d;
-        }
-
-        .boton-secundario {
-            border: 1px solid rgba(255,255,255,0.3);
-            color: white;
-        }
-
-        .boton-principal:hover,
-        .boton-secundario:hover {
-            transform: translateY(-4px);
-        }
-
-        .boton-secundario:hover {
-            background: white;
-            color: #07152d;
-        }
 
         /* =========================
-           SECCIONES
+           SECCIÓN DESCUBRE
         ========================= */
 
-        section {
-            padding: 100px 20px;
+        .accesos {
+            background-color: #071a3d;
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            padding: 70px 30px 90px;
         }
 
         .titulo-seccion {
             text-align: center;
-            font-size: 38px;
-            margin-bottom: 18px;
+
+            margin-bottom: 45px;
         }
 
-        .subtitulo-seccion {
-            text-align: center;
-            color: #9da9bd;
-            max-width: 700px;
-            margin: 0 auto 50px;
-            font-size: 17px;
-        }
-
-        .titulo-seccion::after {
-            content: "";
-            display: block;
-            width: 55px;
-            height: 3px;
-            background: white;
-            margin: 15px auto 0;
-        }
-
-        /* =========================
-           QUIÉNES SOMOS
-        ========================= */
-
-        .quienes-somos {
-            background: #081832;
-        }
-
-        .quienes-contenido {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-        }
-
-        .quienes-contenido p {
-            color: #b9c3d4;
-            font-size: 18px;
-            margin-bottom: 18px;
-        }
-
-        .frase-destacada {
-            margin-top: 35px;
-            padding: 28px;
-            border-left: 3px solid white;
-            background: rgba(255,255,255,0.035);
+        .titulo-seccion h2 {
             color: white;
-            font-size: 20px;
-            font-weight: bold;
-            text-align: left;
-            border-radius: 0 15px 15px 0;
-        }
+            font-size: 34px;
 
-        /* =========================
-           QUÉ HACEMOS
-        ========================= */
-
-        .resumen-servicios {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .mini-servicio {
-            background: #0c1d3b;
-            border: 1px solid #ffffff15;
-            border-radius: 17px;
-            padding: 28px 22px;
-            transition: 0.3s;
-        }
-
-        .mini-servicio:hover {
-            transform: translateY(-6px);
-            border-color: #ffffff35;
-        }
-
-        .mini-servicio span {
-            display: block;
-            color: #7185a5;
-            font-size: 13px;
-            font-weight: bold;
-            letter-spacing: 1px;
             margin-bottom: 12px;
         }
 
-        .mini-servicio h3 {
-            font-size: 19px;
-            margin-bottom: 8px;
+        .titulo-seccion p {
+            color: #b8c8e6;
+            font-size: 16px;
         }
 
-        .mini-servicio p {
-            color: #aeb9cc;
-            font-size: 14px;
-        }
-
-        .centrado {
-            text-align: center;
-            margin-top: 40px;
-        }
 
         /* =========================
-           POR QUÉ XONTREX
+           TARJETAS
         ========================= */
 
-        .por-que {
-            background: #081832;
-        }
-
-        .ventajas {
+        .tarjetas {
             display: grid;
+
             grid-template-columns: repeat(4, 1fr);
+
             gap: 20px;
         }
 
-        .ventaja {
-            background: #0c1d3b;
-            border: 1px solid #ffffff15;
-            border-radius: 17px;
-            padding: 30px 24px;
-            text-align: center;
-        }
-
-        .ventaja h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .ventaja p {
-            color: #aeb9cc;
-            font-size: 14px;
-        }
-
-        /* =========================
-           PARA QUIÉN
-        ========================= */
-
-        .publico {
-            text-align: center;
-        }
-
-        .tipos-negocio {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-            max-width: 800px;
-            margin: auto;
-        }
-
-        .tipo {
-            border: 1px solid rgba(255,255,255,0.12);
-            background: #0c1d3b;
-            border-radius: 30px;
-            padding: 13px 22px;
-            color: #d4dbea;
-            font-size: 15px;
-        }
-
-        /* =========================
-           MISIÓN Y VISIÓN
-        ========================= */
-
-        .dos-columnas {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-        }
-
         .tarjeta {
-            background: #0c1d3b;
-            border: 1px solid #ffffff15;
-            border-radius: 18px;
-            padding: 40px;
+            background-color: #ffffff;
+
+            padding: 32px 22px;
+
+            text-align: center;
+
+            border-radius: 14px;
+
+            border: 1px solid #e5e7eb;
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.20);
+
             transition: 0.3s;
         }
 
         .tarjeta:hover {
-            transform: translateY(-6px);
-            border-color: #ffffff40;
+            transform: translateY(-7px);
+
+            box-shadow: 0 15px 35px rgba(0,0,0,0.30);
         }
 
         .tarjeta h3 {
-            font-size: 27px;
-            margin-bottom: 18px;
+            color: #071a3d;
+
+            margin-bottom: 13px;
+
+            font-size: 20px;
         }
 
         .tarjeta p {
-            color: #b9c3d4;
-            font-size: 17px;
+            color: #596273;
+
+            line-height: 1.6;
+
+            font-size: 14px;
         }
 
-        /* =========================
-           VALORES
-        ========================= */
-
-        .valores {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-        }
-
-        .valor {
-            background: #0c1d3b;
-            border: 1px solid #ffffff15;
-            border-radius: 16px;
-            padding: 30px;
-            transition: 0.3s;
-        }
-
-        .valor:hover {
-            transform: translateY(-5px);
-        }
-
-        .valor h3 {
-            margin-bottom: 10px;
-            font-size: 21px;
-        }
-
-        .valor p {
-            color: #aeb9cc;
-            font-size: 15px;
-        }
-
-        /* =========================
-           REDES
-        ========================= */
-
-        .redes {
-            text-align: center;
-            background: #081832;
-        }
-
-        .redes p {
-            color: #b9c3d4;
-            margin-bottom: 35px;
-            font-size: 17px;
-        }
-
-        .botones {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .boton {
+        .tarjeta a {
             display: inline-block;
+
+            margin-top: 20px;
+
+            color: #071a3d;
+
+            font-weight: bold;
+
             text-decoration: none;
-            color: white;
-            border: 1px solid #ffffff40;
-            padding: 14px 30px;
-            border-radius: 30px;
-            font-size: 16px;
-            transition: 0.3s;
         }
 
-        .boton:hover {
-            background: white;
-            color: #07152d;
-            transform: translateY(-3px);
+        .tarjeta a:hover {
+            text-decoration: underline;
         }
+
 
         /* =========================
            CTA
         ========================= */
 
         .cta {
-            text-align: center;
-        }
+            background-color: #0b2554;
 
-        .cta-caja {
-            max-width: 950px;
-            margin: auto;
-            padding: 70px 40px;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: linear-gradient(
-                135deg,
-                #10294f,
-                #0b1b36
-            );
+            max-width: 1100px;
+
+            margin: 20px auto 80px;
+
+            padding: 60px 30px;
+
+            border-radius: 18px;
+
+            text-align: center;
+
+            border: 1px solid rgba(255,255,255,0.10);
         }
 
         .cta h2 {
-            font-size: 38px;
-            margin-bottom: 15px;
+            font-size: 31px;
+
+            margin-bottom: 16px;
         }
 
         .cta p {
-            color: #aeb9cc;
-            max-width: 650px;
-            margin: 0 auto 30px;
-            font-size: 17px;
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #dbe4f3;
+
+            line-height: 1.7;
         }
+
+        .boton {
+            display: inline-block;
+
+            margin-top: 28px;
+
+            padding: 13px 25px;
+
+            background-color: white;
+
+            color: #071a3d;
+
+            text-decoration: none;
+
+            border-radius: 8px;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px);
+        }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            border-top: 1px solid #ffffff15;
+            background-color: #05132e;
+
+            color: white;
+
             text-align: center;
-            padding: 30px 20px;
-            color: #7f8ba0;
+
+            padding: 28px;
+        }
+
+        footer p {
+            color: #b8c8e6;
+
             font-size: 14px;
         }
 
+
         /* =========================
-           CELULARES
+           RESPONSIVE
         ========================= */
 
         @media (max-width: 900px) {
 
-            .resumen-servicios {
+            nav {
+                gap: 15px;
+            }
+
+            .tarjetas {
                 grid-template-columns: repeat(2, 1fr);
             }
 
-            .ventajas {
-                grid-template-columns: repeat(2, 1fr);
+            .hero h1 {
+                font-size: 52px;
             }
-
         }
 
-        @media (max-width: 750px) {
-
-            .dos-columnas {
-                grid-template-columns: 1fr;
-            }
-
-            .valores {
-                grid-template-columns: 1fr;
-            }
-
-            section {
-                padding: 75px 20px;
-            }
-
-            .tarjeta {
-                padding: 30px;
-            }
-
-        }
 
         @media (max-width: 600px) {
 
-            .resumen-servicios,
-            .ventajas {
+            header {
+                padding: 18px 5%;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 65vh;
+
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 43px;
+            }
+
+            .subtitulo {
+                font-size: 21px;
+            }
+
+            .descripcion {
+                font-size: 16px;
+            }
+
+            .tarjetas {
                 grid-template-columns: 1fr;
             }
 
-            .logo {
-                letter-spacing: 5px;
+            .accesos {
+                padding-left: 20px;
+                padding-right: 20px;
             }
 
-            .inicio h1 {
-                font-size: 32px;
-            }
-
-            .titulo-seccion {
-                font-size: 31px;
-            }
-
-            .cta-caja {
-                padding: 50px 25px;
-            }
-
-            .cta h2 {
-                font-size: 30px;
+            .cta {
+                margin-left: 20px;
+                margin-right: 20px;
             }
 
         }
 
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- =========================
-         INICIO
+         ENCABEZADO
     ========================= -->
 
-    <header class="inicio">
+    <header>
 
-        <div class="inicio-contenido">
+        <a href="index.html" class="logo">
+            XONTREX
+        </a>
 
-            <div class="etiqueta">
-                SERVICIOS DIGITALES
-            </div>
 
-            <div class="logo">
-                XONTREX
-            </div>
+        <nav>
 
-            <div class="linea"></div>
+            <a href="nosotros/">
+                Nosotros
+            </a>
 
-            <h1>
-                Soluciones digitales para
-                <span>hacer crecer tu negocio.</span>
-            </h1>
+            <a href="servicios/">
+                Servicios
+            </a>
 
-            <p>
-                Ayudamos a negocios a construir, organizar y mejorar
-                su presencia digital mediante soluciones prácticas,
-                estratégicas y adaptadas a sus necesidades.
-            </p>
+            <a href="esencia/">
+                Nuestra esencia
+            </a>
 
-            <div class="botones-inicio">
+            <a href="contactos/">
+                Contactos
+            </a>
 
-                <a href="servicios/" class="boton-principal">
-                    Ver nuestros servicios →
-                </a>
-
-                <a href="contactos/"class="boton-secundario">
-                    Contactar con Xontrex
-                </a>
-
-            </div>
-
-        </div>
+        </nav>
 
     </header>
 
 
+
     <!-- =========================
-         QUIÉNES SOMOS
+         PRESENTACIÓN
     ========================= -->
 
-    <section class="quienes-somos">
+    <section class="hero">
 
-        <div class="contenedor">
+        <div class="hero-contenido">
 
-            <h2 class="titulo-seccion">
-                ¿Quiénes somos?
-            </h2>
+            <h1>
+                XONTREX
+            </h1>
 
-            <p class="subtitulo-seccion">
-                Una marca enfocada en ayudar a los negocios a aprovechar
-                mejor las herramientas digitales.
-            </p>
+            <div class="linea"></div>
 
-            <div class="quienes-contenido">
-
-                <p>
-                    Xontrex es una empresa de servicios digitales enfocada
-                    en ayudar a negocios a construir, organizar y mejorar
-                    su presencia en Internet.
-                </p>
-
-                <p>
-                    Trabajamos con redes sociales, contenido digital,
-                    menús digitales, Google Maps, publicidad y otros
-                    canales para crear una presencia digital más completa,
-                    clara y funcional.
-                </p>
-
-                <p>
-                    Nuestro enfoque es convertir las necesidades digitales
-                    de cada negocio en soluciones prácticas que puedan
-                    facilitar su crecimiento y conexión con sus clientes.
-                </p>
-
-                <div class="frase-destacada">
-                    Tu negocio ya tiene una historia.
-                    <br>
-                    Nosotros ayudamos a llevarla al mundo digital.
-                </div>
-
+            <div class="subtitulo">
+                Soluciones digitales
             </div>
+
+            <p class="descripcion">
+
+                Ayudamos a negocios, marcas y proyectos a
+                crecer, conectar con su audiencia y destacar
+                en el mundo digital.
+
+            </p>
 
         </div>
 
     </section>
 
 
-    <!-- =========================
-         QUÉ HACEMOS
-    ========================= -->
-
-    <section>
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                ¿Qué hacemos?
-            </h2>
-
-            <p class="subtitulo-seccion">
-                Desde la gestión de tus redes hasta la organización
-                completa de tu presencia digital.
-            </p>
-
-            <div class="resumen-servicios">
-
-                <div class="mini-servicio">
-                    <span>01 / REDES</span>
-                    <h3>Gestión de redes sociales</h3>
-                    <p>Organización, contenido y estrategia para Instagram y TikTok.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>02 / PERFILES</span>
-                    <h3>Gestión de perfiles</h3>
-                    <p>Optimizamos la información e imagen de tus perfiles.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>03 / CONTENIDO</span>
-                    <h3>Creación de contenido</h3>
-                    <p>Fotografía, video y contenido adaptado para redes.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>04 / MENÚS</span>
-                    <h3>Menús digitales</h3>
-                    <p>Menús modernos, adaptados a celulares y accesibles mediante URL o QR.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>05 / MANTENIMIENTO</span>
-                    <h3>Mantenimiento mensual</h3>
-                    <p>Actualización constante de información, productos, precios y enlaces.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>06 / PUBLICIDAD</span>
-                    <h3>Publicidad digital</h3>
-                    <p>Campañas digitales orientadas al público que buscas alcanzar.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>07 / PRESENCIA</span>
-                    <h3>Presencia digital</h3>
-                    <p>Organización de los principales canales digitales de tu negocio.</p>
-                </div>
-
-                <div class="mini-servicio">
-                    <span>08 / GOOGLE</span>
-                    <h3>Google Maps</h3>
-                    <p>Optimización del Perfil de Empresa para mejorar su presentación en Google.</p>
-                </div>
-
-            </div>
-
-            <div class="centrado">
-
-                <a href="servicios/" class="boton-principal">
-                    Ver los 8 servicios →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
 
     <!-- =========================
-         POR QUÉ XONTREX
+         ACCESOS
     ========================= -->
 
-    <section class="por-que">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                ¿Por qué Xontrex?
-            </h2>
-
-            <p class="subtitulo-seccion">
-                Buscamos ofrecer soluciones claras, prácticas y adaptadas
-                a las necesidades de cada negocio.
-            </p>
-
-            <div class="ventajas">
-
-                <div class="ventaja">
-                    <h3>Enfoque</h3>
-                    <p>
-                        Analizamos las necesidades de tu negocio antes
-                        de plantear una solución.
-                    </p>
-                </div>
-
-                <div class="ventaja">
-                    <h3>Claridad</h3>
-                    <p>
-                        Explicamos nuestras soluciones de forma sencilla
-                        y comprensible.
-                    </p>
-                </div>
-
-                <div class="ventaja">
-                    <h3>Adaptación</h3>
-                    <p>
-                        Cada negocio es diferente. Nuestras soluciones
-                        se adaptan a cada situación.
-                    </p>
-                </div>
-
-                <div class="ventaja">
-                    <h3>Visión digital</h3>
-                    <p>
-                        Trabajamos diferentes canales para construir
-                        una presencia digital más completa.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
+    <section class="accesos">
 
 
-    <!-- =========================
-         PARA QUIÉN TRABAJAMOS
-    ========================= -->
+        <div class="titulo-seccion">
 
-    <section class="publico">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                ¿Para quién trabajamos?
-            </h2>
-
-            <p class="subtitulo-seccion">
-                Nuestras soluciones están pensadas especialmente para
-                negocios que quieren mejorar su presencia digital.
-            </p>
-
-            <div class="tipos-negocio">
-
-                <div class="tipo">Restaurantes</div>
-                <div class="tipo">Cafeterías</div>
-                <div class="tipo">Tiendas</div>
-                <div class="tipo">Emprendedores</div>
-                <div class="tipo">Negocios locales</div>
-                <div class="tipo">Pequeñas empresas</div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         MISIÓN Y VISIÓN
-    ========================= -->
-
-    <section>
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                Nuestra dirección
-            </h2>
-
-            <p class="subtitulo-seccion">
-                Lo que guía el trabajo y el crecimiento de Xontrex.
-            </p>
-
-            <div class="dos-columnas">
-
-                <div class="tarjeta">
-
-                    <h3>
-                        Nuestra misión
-                    </h3>
-
-                    <p>
-                        Ayudar a los negocios a aprovechar las herramientas
-                        digitales mediante servicios accesibles, estratégicos
-                        y adaptados a sus necesidades, facilitando una presencia
-                        digital más organizada y efectiva.
-                    </p>
-
-                </div>
-
-
-                <div class="tarjeta">
-
-                    <h3>
-                        Nuestra visión
-                    </h3>
-
-                    <p>
-                        Convertirnos en una marca de referencia en servicios
-                        y soluciones digitales para negocios, impulsando su
-                        evolución y adaptación al entorno digital.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         VALORES
-    ========================= -->
-
-    <section class="por-que">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                Nuestros valores
-            </h2>
-
-            <p class="subtitulo-seccion">
-                Principios que buscamos aplicar en cada proyecto.
-            </p>
-
-            <div class="valores">
-
-                <div class="valor">
-                    <h3>Confianza</h3>
-                    <p>
-                        Construimos relaciones basadas en la transparencia,
-                        el respeto y la comunicación.
-                    </p>
-                </div>
-
-                <div class="valor">
-                    <h3>Responsabilidad</h3>
-                    <p>
-                        Cumplimos nuestros compromisos y asumimos cada
-                        proyecto con seriedad.
-                    </p>
-                </div>
-
-                <div class="valor">
-                    <h3>Innovación</h3>
-                    <p>
-                        Buscamos nuevas ideas y herramientas para encontrar
-                        mejores oportunidades para cada negocio.
-                    </p>
-                </div>
-
-                <div class="valor">
-                    <h3>Creatividad</h3>
-                    <p>
-                        Convertimos ideas en estrategias capaces de conectar
-                        marcas con personas.
-                    </p>
-                </div>
-
-                <div class="valor">
-                    <h3>Compromiso</h3>
-                    <p>
-                        Trabajamos para aportar soluciones que generen
-                        verdadero valor a nuestros clientes.
-                    </p>
-                </div>
-
-                <div class="valor">
-                    <h3>Excelencia</h3>
-                    <p>
-                        Buscamos mejorar continuamente la calidad de nuestro
-                        trabajo y la experiencia de nuestros clientes.
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =========================
-         REDES
-    ========================= -->
-
-    <section class="redes">
-
-        <div class="contenedor">
-
-            <h2 class="titulo-seccion">
-                Conecta con Xontrex
+            <h2>
+                Descubre Xontrex
             </h2>
 
             <p>
-                Síguenos y descubre nuestras soluciones y contenido digital.
+                Conoce nuestra empresa, nuestros servicios y nuestra esencia.
             </p>
 
-            <div class="botones">
+        </div>
 
-                <a href="https://www.instagram.com/xontrex.web/" class="boton"> 
-                    Instagram 
-                </a>
 
-                <a href="https://www.tiktok.com/@xontrex.web" class="boton">
-                    TikTok
+
+        <div class="tarjetas">
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Nosotros
+                </h3>
+
+                <p>
+                    Conoce quiénes somos, qué hacemos,
+                    por qué Xontrex y para quién trabajamos.
+                </p>
+
+                <a href="nosotros/">
+                    Conocer más →
                 </a>
 
             </div>
 
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Servicios
+                </h3>
+
+                <p>
+                    Descubre las soluciones digitales
+                    que Xontrex ofrece.
+                </p>
+
+                <a href="servicios/">
+                    Ver servicios →
+                </a>
+
+            </div>
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Nuestra esencia
+                </h3>
+
+                <p>
+                    Conoce nuestra misión, visión y los
+                    valores que representan a Xontrex.
+                </p>
+
+                <a href="esencia/">
+                    Conocer más →
+                </a>
+
+            </div>
+
+
+
+            <div class="tarjeta">
+
+                <h3>
+                    Contactos
+                </h3>
+
+                <p>
+                    Ponte en contacto con Xontrex y
+                    descubre cómo podemos ayudarte.
+                </p>
+
+                <a href="contactos/">
+                    Contactar →
+                </a>
+
+            </div>
+
+
         </div>
 
     </section>
+
 
 
     <!-- =========================
          CTA
     ========================= -->
 
-    <section class="cta" id="contacto">
+    <section class="cta">
 
-        <div class="cta-caja">
+        <h2>
+            Hagamos crecer tu presencia digital
+        </h2>
 
-            <h2>
-                ¿Listo para mejorar la presencia digital de tu negocio?
-            </h2>
+        <p>
+            Una buena idea merece una buena presencia digital.
+            En Xontrex trabajamos para convertir ideas y
+            proyectos en oportunidades digitales.
+        </p>
 
-            <p>
-                Cuéntanos qué necesita tu negocio y descubre qué solución
-                de Xontrex puede ayudarte a dar el siguiente paso.
-            </p>
-
-            <a href="servicios/" class="boton-principal">
-                Conocer nuestros servicios →
-            </a>
-
-        </div>
+        <a href="contactos/" class="boton">
+            Contactar con Xontrex
+        </a>
 
     </section>
+
 
 
     <!-- =========================
@@ -999,11 +575,14 @@
 
     <footer>
 
-        © 2026 Xontrex. Todos los derechos reservados.
+        <p>
+            © 2026 Xontrex. Todos los derechos reservados.
+        </p>
 
     </footer>
 
 
 </body>
+
 </html>
-```
+
