@@ -1,12 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Nosotros | Xontrex</title>
 
     <style>
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
 
         * {
             margin: 0;
@@ -15,52 +21,114 @@
             font-family: Arial, Helvetica, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            background-color: #071a3d;
+            background: #071a3d;
             color: white;
+            overflow-x: hidden;
         }
 
 
         /* =========================
-           ENCABEZADO
+           HEADER
         ========================= */
 
         header {
-            background-color: #071a3d;
-
-            padding: 22px 8%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
 
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
 
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+            padding: 20px 8%;
+
+            background: rgba(7, 26, 61, 0.88);
+
+            backdrop-filter: blur(14px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.08);
         }
 
         .logo {
             color: white;
-            font-size: 28px;
+
+            text-decoration: none;
+
+            font-size: 27px;
+
             font-weight: bold;
-            letter-spacing: 1px;
-            text-decoration: none;
-        }
 
-        .volver {
-            color: white;
-            text-decoration: none;
-            font-size: 15px;
-
-            padding: 10px 18px;
-
-            border: 1px solid rgba(255,255,255,0.5);
-            border-radius: 8px;
+            letter-spacing: 2px;
 
             transition: 0.3s;
         }
 
-        .volver:hover {
-            background-color: white;
-            color: #071a3d;
+        .logo:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 28px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: #dbe4f3;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #5b94ff;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        nav .activo {
+            color: white;
+        }
+
+        nav .activo::after {
+            width: 100%;
         }
 
 
@@ -69,89 +137,188 @@
         ========================= */
 
         .hero {
-            background-color: #071a3d;
+            min-height: 70vh;
 
-            color: white;
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
 
             text-align: center;
 
-            padding: 75px 20px 65px;
+            padding: 90px 20px;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 500px;
+
+            height: 500px;
+
+            background: #1468ff;
+
+            filter: blur(190px);
+
+            opacity: 0.14;
+
+            top: -250px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 300px;
+
+            height: 300px;
+
+            background: #1769ff;
+
+            filter: blur(180px);
+
+            opacity: 0.08;
+
+            right: -150px;
+
+            bottom: -150px;
+        }
+
+        .hero-contenido {
+            position: relative;
+
+            max-width: 850px;
+
+            animation: aparecer 1s ease;
+        }
+
+        .etiqueta {
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            margin-bottom: 25px;
+
+            border-radius: 50px;
+
+            border: 1px solid rgba(91,148,255,0.35);
+
+            background: rgba(91,148,255,0.08);
+
+            color: #9abbff;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
         }
 
         .hero h1 {
-            font-size: 44px;
-            margin-bottom: 18px;
+            font-size: clamp(48px, 8vw, 82px);
+
+            line-height: 1;
+
+            margin-bottom: 25px;
+
+            letter-spacing: 3px;
+
+            font-weight: 900;
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #8db6ff,
+                #ffffff
+            );
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero h2 {
+            font-size: clamp(25px, 4vw, 38px);
+
+            line-height: 1.3;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h2 span {
+            color: #5b94ff;
         }
 
         .hero p {
-            max-width: 720px;
+            max-width: 700px;
 
             margin: auto;
 
-            font-size: 18px;
-            line-height: 1.7;
+            color: #bdcbe0;
 
-            color: #dbe4f3;
+            font-size: 17px;
+
+            line-height: 1.8;
         }
 
 
         /* =========================
-           CONTENIDO
+           CONTENEDOR GENERAL
         ========================= */
 
-        .contenido {
+        .contenedor {
             max-width: 1100px;
 
-            margin: 0 auto;
+            margin: auto;
 
-            padding: 30px 20px 70px;
-
-            background-color: #071a3d;
+            padding: 30px 25px 100px;
         }
 
 
         /* =========================
-           TARJETAS
+           SECCIONES
         ========================= */
 
-        .tarjetas {
-            display: grid;
-
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 25px;
+        .seccion {
+            margin-bottom: 100px;
         }
 
-        .tarjeta {
-            background-color: #0b2554;
+        .etiqueta-seccion {
+            color: #5b94ff;
 
-            padding: 38px;
+            font-size: 12px;
 
-            border-radius: 16px;
+            font-weight: bold;
 
-            border: 1px solid rgba(255,255,255,0.10);
+            letter-spacing: 2px;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.20);
+            text-transform: uppercase;
 
-            transition: 0.3s;
+            margin-bottom: 12px;
         }
 
-        .tarjeta:hover {
-            transform: translateY(-5px);
+        .titulo-seccion {
+            font-size: 38px;
 
-            box-shadow: 0 14px 30px rgba(0,0,0,0.30);
+            margin-bottom: 20px;
+
+            line-height: 1.2;
         }
 
-        .tarjeta h2 {
-            color: white;
-
-            font-size: 25px;
-
-            margin-bottom: 15px;
-        }
-
-        .tarjeta p {
-            color: #dbe4f3;
+        .texto-seccion {
+            color: #aebed5;
 
             font-size: 16px;
 
@@ -160,68 +327,474 @@
 
 
         /* =========================
-           SECCIÓN DESTACADA
+           QUIÉNES SOMOS
         ========================= */
 
-        .destacado {
-            margin-top: 28px;
+        .quienes {
+            display: grid;
 
-            background-color: #0b2554;
+            grid-template-columns: 1fr 1fr;
+
+            gap: 35px;
+
+            align-items: center;
+        }
+
+        .quienes-texto {
+            padding-right: 20px;
+        }
+
+        .quienes-texto p {
+            color: #b7c6dc;
+
+            line-height: 1.85;
+
+            margin-bottom: 18px;
+
+            font-size: 16px;
+        }
+
+        .bloque-xontrex {
+            min-height: 320px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border-radius: 22px;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    rgba(52,119,255,0.24),
+                    transparent 65%
+                ),
+                #0a2148;
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            box-shadow: 0 20px 50px rgba(0,0,0,0.20);
+        }
+
+        .bloque-xontrex::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            border: 1px solid rgba(91,148,255,0.25);
+
+            border-radius: 50%;
+
+            animation: girar 12s linear infinite;
+        }
+
+        .bloque-xontrex::after {
+            content: "";
+
+            position: absolute;
+
+            width: 260px;
+
+            height: 260px;
+
+            border: 1px solid rgba(91,148,255,0.10);
+
+            border-radius: 50%;
+
+            animation: girar 18s linear infinite reverse;
+        }
+
+        .xontrex-grande {
+            position: relative;
+
+            z-index: 2;
+
+            font-size: clamp(45px, 7vw, 70px);
+
+            font-weight: 900;
+
+            letter-spacing: 5px;
 
             color: white;
-
-            padding: 45px 30px;
-
-            border-radius: 16px;
-
-            text-align: center;
-
-            border: 1px solid rgba(255,255,255,0.10);
-        }
-
-        .destacado h2 {
-            font-size: 28px;
-
-            margin-bottom: 15px;
-        }
-
-        .destacado p {
-            max-width: 750px;
-
-            margin: auto;
-
-            line-height: 1.7;
-
-            color: #dbe4f3;
         }
 
 
         /* =========================
-           BOTÓN
+           QUÉ HACEMOS
         ========================= */
 
-        .boton {
-            display: inline-block;
+        .enfoque-grid {
+            display: grid;
 
-            margin-top: 25px;
+            grid-template-columns: repeat(3, 1fr);
 
-            padding: 12px 24px;
+            gap: 20px;
 
-            background-color: white;
+            margin-top: 40px;
+        }
 
-            color: #071a3d;
+        .enfoque {
+            padding: 30px 25px;
 
-            text-decoration: none;
+            border-radius: 17px;
 
-            border-radius: 8px;
+            background: rgba(255,255,255,0.045);
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            transition: 0.35s;
+        }
+
+        .enfoque:hover {
+            transform: translateY(-7px);
+
+            border-color: rgba(91,148,255,0.35);
+
+            background: rgba(255,255,255,0.065);
+        }
+
+        .numero {
+            color: #5b94ff;
+
+            font-size: 13px;
 
             font-weight: bold;
+
+            letter-spacing: 2px;
+
+            margin-bottom: 22px;
+        }
+
+        .enfoque h3 {
+            font-size: 20px;
+
+            margin-bottom: 12px;
+        }
+
+        .enfoque p {
+            color: #9eafc7;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           PARA QUIÉN
+        ========================= */
+
+        .publico {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 15px;
+
+            margin-top: 40px;
+        }
+
+        .publico-card {
+            padding: 28px 20px;
+
+            text-align: center;
+
+            background: #0b2554;
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 15px;
 
             transition: 0.3s;
         }
 
-        .boton:hover {
-            transform: translateY(-3px);
+        .publico-card:hover {
+            transform: translateY(-6px);
+
+            border-color: rgba(91,148,255,0.35);
+        }
+
+        .publico-icono {
+            width: 48px;
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 17px;
+
+            border-radius: 12px;
+
+            background: rgba(91,148,255,0.12);
+
+            color: #72a3ff;
+
+            font-size: 20px;
+        }
+
+        .publico-card h3 {
+            font-size: 16px;
+        }
+
+
+        /* =========================
+           FORMA DE TRABAJAR
+        ========================= */
+
+        .proceso {
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 18px;
+
+            margin-top: 40px;
+        }
+
+        .paso {
+            position: relative;
+
+            padding: 28px 22px;
+
+            border-left: 2px solid rgba(91,148,255,0.35);
+
+            background: rgba(255,255,255,0.035);
+
+            border-radius: 0 14px 14px 0;
+        }
+
+        .paso-numero {
+            font-size: 12px;
+
+            color: #5b94ff;
+
+            font-weight: bold;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 18px;
+        }
+
+        .paso h3 {
+            margin-bottom: 10px;
+
+            font-size: 18px;
+        }
+
+        .paso p {
+            color: #9eafc7;
+
+            font-size: 14px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================
+           POR QUÉ XONTREX
+        ========================= */
+
+        .diferencia {
+            display: grid;
+
+            grid-template-columns: 1fr 1.3fr;
+
+            gap: 40px;
+
+            padding: 55px 45px;
+
+            border-radius: 22px;
+
+            background:
+                radial-gradient(
+                    circle at top left,
+                    rgba(55,120,255,0.20),
+                    transparent 60%
+                ),
+                #0a2148;
+
+            border: 1px solid rgba(255,255,255,0.09);
+        }
+
+        .diferencia h2 {
+            font-size: 36px;
+
+            line-height: 1.2;
+        }
+
+        .diferencia h2 span {
+            color: #5b94ff;
+        }
+
+        .diferencia-texto p {
+            color: #b7c6dc;
+
+            line-height: 1.8;
+
+            margin-bottom: 25px;
+        }
+
+        .puntos {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+        }
+
+        .punto {
+            padding: 18px;
+
+            background: rgba(255,255,255,0.04);
+
+            border-radius: 12px;
+
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .punto strong {
+            display: block;
+
+            margin-bottom: 6px;
+
+            font-size: 15px;
+        }
+
+        .punto span {
+            color: #94a6c0;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================
+           FUTURO
+        ========================= */
+
+        .futuro {
+            text-align: center;
+
+            padding: 70px 30px;
+
+            border-radius: 22px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(23,105,255,0.13),
+                    rgba(7,26,61,0.8)
+                );
+
+            border: 1px solid rgba(91,148,255,0.15);
+        }
+
+        .futuro h2 {
+            font-size: 36px;
+
+            margin-bottom: 18px;
+        }
+
+        .futuro p {
+            max-width: 700px;
+
+            margin: auto;
+
+            color: #b7c6dc;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           BOTONES
+        ========================= */
+
+        .botones {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 30px;
+        }
+
+        .boton {
+            display: inline-block;
+
+            padding: 13px 22px;
+
+            border-radius: 8px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        .boton-principal {
+            background: white;
+
+            color: #071a3d;
+        }
+
+        .boton-principal:hover {
+            transform: translateY(-4px);
+
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+
+        .boton-secundario {
+            color: white;
+
+            background: rgba(255,255,255,0.04);
+
+            border: 1px solid rgba(255,255,255,0.18);
+        }
+
+        .boton-secundario:hover {
+            background: rgba(255,255,255,0.10);
+
+            transform: translateY(-4px);
+        }
+
+        .boton-contacto {
+            color: white;
+
+            background: #1769ff;
+
+            border: 1px solid #1769ff;
+        }
+
+        .boton-contacto:hover {
+            background: #2b78ff;
+
+            transform: translateY(-4px);
+
+            box-shadow: 0 10px 25px rgba(23,105,255,0.30);
         }
 
 
@@ -230,63 +803,234 @@
         ========================= */
 
         footer {
-            background-color: #05132e;
+            background: #05132e;
 
+            border-top: 1px solid rgba(255,255,255,0.07);
+
+            padding: 45px 8%;
+        }
+
+        .footer-contenido {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #94a6c0;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
             color: white;
+        }
+
+        .copyright {
+            margin-top: 30px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid rgba(255,255,255,0.06);
 
             text-align: center;
 
-            padding: 28px;
+            color: #687b97;
 
-            margin-top: 0;
-        }
-
-        footer p {
-            font-size: 14px;
-
-            color: #b8c8e6;
+            font-size: 12px;
         }
 
 
         /* =========================
-           CELULARES
+           ANIMACIONES
         ========================= */
 
-        @media (max-width: 700px) {
+        @keyframes aparecer {
+
+            from {
+                opacity: 0;
+
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes girar {
+
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            nav {
+                gap: 16px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .quienes {
+                grid-template-columns: 1fr;
+            }
+
+            .quienes-texto {
+                padding-right: 0;
+            }
+
+            .enfoque-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .publico {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .proceso {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .diferencia {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width: 650px) {
 
             header {
                 padding: 18px 5%;
             }
 
             .logo {
-                font-size: 24px;
+                font-size: 23px;
             }
 
-            .volver {
-                font-size: 13px;
-
-                padding: 8px 12px;
+            nav {
+                display: none;
             }
 
             .hero {
-                padding: 60px 20px;
+                min-height: 65vh;
+
+                padding: 70px 20px;
             }
 
             .hero h1 {
-                font-size: 35px;
+                font-size: 48px;
+
+                letter-spacing: 2px;
+            }
+
+            .hero h2 {
+                font-size: 26px;
             }
 
             .hero p {
-                font-size: 16px;
+                font-size: 15px;
             }
 
-            .tarjetas {
+            .contenedor {
+                padding: 20px 20px 70px;
+            }
+
+            .seccion {
+                margin-bottom: 75px;
+            }
+
+            .titulo-seccion {
+                font-size: 29px;
+            }
+
+            .enfoque-grid {
                 grid-template-columns: 1fr;
             }
 
-            .tarjeta {
-                padding: 30px;
+            .publico {
+                grid-template-columns: 1fr 1fr;
             }
+
+            .proceso {
+                grid-template-columns: 1fr;
+            }
+
+            .diferencia {
+                padding: 35px 25px;
+            }
+
+            .diferencia h2 {
+                font-size: 29px;
+            }
+
+            .puntos {
+                grid-template-columns: 1fr;
+            }
+
+            .futuro {
+                padding: 50px 22px;
+            }
+
+            .futuro h2 {
+                font-size: 29px;
+            }
+
+            .footer-contenido {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
+            }
+
         }
 
     </style>
@@ -297,7 +1041,9 @@
 <body>
 
 
-    <!-- ENCABEZADO -->
+    <!-- =========================
+         HEADER
+    ========================= -->
 
     <header>
 
@@ -305,138 +1051,626 @@
             XONTREX
         </a>
 
-        <a href="../index.html" class="volver">
-            Volver al inicio
-        </a>
+
+        <nav>
+
+            <a href="../index.html">
+                Inicio
+            </a>
+
+            <a href="./" class="activo">
+                Nosotros
+            </a>
+
+            <a href="../servicios/">
+                Servicios
+            </a>
+
+            <a href="../esencia/">
+                Nuestra esencia
+            </a>
+
+            <a href="../contactos/">
+                Contactos
+            </a>
+
+        </nav>
 
     </header>
 
 
-    <!-- PRESENTACIÓN -->
+    <!-- =========================
+         HERO
+    ========================= -->
 
     <section class="hero">
 
-        <h1>
-            Conoce Xontrex
-        </h1>
+        <div class="hero-contenido">
 
-        <p>
-            Somos una iniciativa enfocada en crear soluciones digitales
-            que ayudan a negocios, marcas y proyectos a construir una
-            presencia más sólida en el mundo digital.
-        </p>
-
-    </section>
-
-
-    <!-- CONTENIDO -->
-
-    <section class="contenido">
-
-        <div class="tarjetas">
-
-
-            <div class="tarjeta">
-
-                <h2>
-                    Quiénes somos
-                </h2>
-
-                <p>
-                    Xontrex es un proyecto enfocado en el mundo digital,
-                    creado con la visión de ayudar a negocios y proyectos
-                    a aprovechar las oportunidades que ofrecen las redes
-                    sociales y las nuevas herramientas digitales.
-                </p>
-
+            <div class="etiqueta">
+                SOBRE XONTREX
             </div>
 
-
-            <div class="tarjeta">
-
-                <h2>
-                    Qué hacemos
-                </h2>
-
-                <p>
-                    Desarrollamos soluciones digitales orientadas a mejorar
-                    la presencia de nuestros clientes en internet. Trabajamos
-                    con contenido, redes sociales, estrategias digitales y
-                    diferentes herramientas que permiten comunicar mejor una
-                    marca y conectar con su audiencia.
-                </p>
-
-            </div>
-
-
-            <div class="tarjeta">
-
-                <h2>
-                    ¿Por qué Xontrex?
-                </h2>
-
-                <p>
-                    Porque creemos que cada negocio tiene algo que contar.
-                    Nuestro objetivo es combinar creatividad, estrategia y
-                    herramientas digitales para convertir ideas en una
-                    presencia digital clara, moderna y atractiva.
-                </p>
-
-            </div>
-
-
-            <div class="tarjeta">
-
-                <h2>
-                    ¿Para quién trabajamos?
-                </h2>
-
-                <p>
-                    Trabajamos principalmente con pequeños y medianos
-                    negocios, emprendedores, marcas y proyectos que buscan
-                    mejorar su presencia digital, conectar con más personas
-                    y desarrollar nuevas oportunidades en internet.
-                </p>
-
-            </div>
-
-
-        </div>
-
-
-        <!-- SECCIÓN FINAL -->
-
-        <div class="destacado">
+            <h1>
+                Conoce Xontrex
+            </h1>
 
             <h2>
-                Tu negocio también puede crecer en digital
+                Una visión digital para
+                <span>ideas que quieren crecer.</span>
             </h2>
 
             <p>
-                En Xontrex buscamos convertir las ideas de nuestros clientes
-                en experiencias digitales que conecten con las personas y
-                ayuden a impulsar sus proyectos.
-            </p>
 
-            <a href="../servicios/" class="boton">
-                Ver nuestros servicios
-            </a>
+                Xontrex nace con una idea sencilla:
+                ayudar a negocios, marcas y proyectos
+                a construir una presencia digital capaz
+                de conectar con las personas y abrir
+                nuevas oportunidades.
+
+            </p>
 
         </div>
 
     </section>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         CONTENIDO
+    ========================= -->
+
+    <main class="contenedor">
+
+
+        <!-- =========================
+             QUIÉNES SOMOS
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="quienes">
+
+
+                <div class="quienes-texto">
+
+                    <div class="etiqueta-seccion">
+                        QUIÉNES SOMOS
+                    </div>
+
+                    <h2 class="titulo-seccion">
+                        Más que una presencia digital.
+                    </h2>
+
+                    <p>
+
+                        Xontrex es una iniciativa enfocada en el
+                        mundo digital y en las oportunidades que
+                        existen detrás de una buena idea.
+
+                    </p>
+
+                    <p>
+
+                        Trabajamos para ayudar a transformar ideas,
+                        negocios y proyectos en presencias digitales
+                        más claras, creativas y preparadas para
+                        conectar con sus audiencias.
+
+                    </p>
+
+                    <p>
+
+                        Combinamos creatividad, estrategia y
+                        herramientas digitales para construir
+                        soluciones que tengan sentido para cada
+                        proyecto.
+
+                    </p>
+
+                </div>
+
+
+                <div class="bloque-xontrex">
+
+                    <div class="xontrex-grande">
+                        XONTREX
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUÉ HACEMOS
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="etiqueta-seccion">
+                NUESTRO ENFOQUE
+            </div>
+
+            <h2 class="titulo-seccion">
+                Convertimos ideas en presencia.
+            </h2>
+
+            <p class="texto-seccion">
+
+                Nuestro trabajo gira alrededor de diferentes
+                áreas del mundo digital. No se trata solamente
+                de crear contenido, sino de construir una
+                comunicación que tenga dirección y propósito.
+
+            </p>
+
+
+            <div class="enfoque-grid">
+
+
+                <div class="enfoque">
+
+                    <div class="numero">
+                        01 / DIGITAL
+                    </div>
+
+                    <h3>
+                        Presencia digital
+                    </h3>
+
+                    <p>
+
+                        Ayudamos a desarrollar una imagen digital
+                        coherente, moderna y preparada para
+                        representar correctamente un proyecto.
+
+                    </p>
+
+                </div>
+
+
+                <div class="enfoque">
+
+                    <div class="numero">
+                        02 / CONTENT
+                    </div>
+
+                    <h3>
+                        Contenido
+                    </h3>
+
+                    <p>
+
+                        Desarrollamos ideas y piezas de contenido
+                        pensadas para captar atención y generar
+                        conexión con diferentes audiencias.
+
+                    </p>
+
+                </div>
+
+
+                <div class="enfoque">
+
+                    <div class="numero">
+                        03 / SOCIAL
+                    </div>
+
+                    <h3>
+                        Redes sociales
+                    </h3>
+
+                    <p>
+
+                        Trabajamos la presencia en redes sociales
+                        buscando que cada plataforma forme parte
+                        de una estrategia coherente.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PARA QUIÉN
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="etiqueta-seccion">
+                NUESTRO PÚBLICO
+            </div>
+
+            <h2 class="titulo-seccion">
+                ¿Para quién creamos?
+            </h2>
+
+            <p class="texto-seccion">
+
+                Xontrex está pensado para proyectos que quieren
+                aprovechar el mundo digital para crecer, conectar
+                y encontrar nuevas oportunidades.
+
+            </p>
+
+
+            <div class="publico">
+
+
+                <div class="publico-card">
+
+                    <div class="publico-icono">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Negocios
+                    </h3>
+
+                </div>
+
+
+                <div class="publico-card">
+
+                    <div class="publico-icono">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Marcas
+                    </h3>
+
+                </div>
+
+
+                <div class="publico-card">
+
+                    <div class="publico-icono">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Emprendedores
+                    </h3>
+
+                </div>
+
+
+                <div class="publico-card">
+
+                    <div class="publico-icono">
+                        +
+                    </div>
+
+                    <h3>
+                        Proyectos
+                    </h3>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FORMA DE TRABAJAR
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="etiqueta-seccion">
+                CÓMO TRABAJAMOS
+            </div>
+
+            <h2 class="titulo-seccion">
+                De la idea a la presencia.
+            </h2>
+
+            <p class="texto-seccion">
+
+                Cada proyecto tiene necesidades diferentes.
+                Por eso buscamos entender primero la idea
+                antes de construir una solución.
+
+            </p>
+
+
+            <div class="proceso">
+
+
+                <div class="paso">
+
+                    <div class="paso-numero">
+                        01
+                    </div>
+
+                    <h3>
+                        Entendemos
+                    </h3>
+
+                    <p>
+
+                        Conocemos el proyecto, sus objetivos
+                        y lo que quiere comunicar.
+
+                    </p>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-numero">
+                        02
+                    </div>
+
+                    <h3>
+                        Construimos
+                    </h3>
+
+                    <p>
+
+                        Desarrollamos ideas, contenido y
+                        soluciones adaptadas al proyecto.
+
+                    </p>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-numero">
+                        03
+                    </div>
+
+                    <h3>
+                        Conectamos
+                    </h3>
+
+                    <p>
+
+                        Buscamos que la presencia digital
+                        conecte con las personas correctas.
+
+                    </p>
+
+                </div>
+
+
+                <div class="paso">
+
+                    <div class="paso-numero">
+                        04
+                    </div>
+
+                    <h3>
+                        Evolucionamos
+                    </h3>
+
+                    <p>
+
+                        Analizamos nuevas oportunidades y
+                        buscamos formas de seguir creciendo.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             POR QUÉ XONTREX
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="diferencia">
+
+
+                <div>
+
+                    <div class="etiqueta-seccion">
+                        POR QUÉ XONTREX
+                    </div>
+
+                    <h2>
+                        Creatividad con
+                        <span>dirección.</span>
+                    </h2>
+
+                </div>
+
+
+                <div class="diferencia-texto">
+
+                    <p>
+
+                        Creemos que tener presencia digital
+                        no significa simplemente estar en
+                        internet. Significa tener algo que
+                        comunicar, una identidad que reconocer
+                        y una forma de conectar.
+
+                    </p>
+
+                    <div class="puntos">
+
+
+                        <div class="punto">
+
+                            <strong>
+                                Creatividad
+                            </strong>
+
+                            <span>
+                                Buscamos ideas diferentes y
+                                formas atractivas de comunicar.
+                            </span>
+
+                        </div>
+
+
+                        <div class="punto">
+
+                            <strong>
+                                Estrategia
+                            </strong>
+
+                            <span>
+                                Cada acción debe tener una
+                                razón y un objetivo.
+                            </span>
+
+                        </div>
+
+
+                        <div class="punto">
+
+                            <strong>
+                                Adaptabilidad
+                            </strong>
+
+                            <span>
+                                El mundo digital cambia y
+                                nosotros evolucionamos con él.
+                            </span>
+
+                        </div>
+
+
+                        <div class="punto">
+
+                            <strong>
+                                Visión
+                            </strong>
+
+                            <span>
+                                Pensamos más allá del presente
+                                y buscamos nuevas oportunidades.
+                            </span>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             FUTURO
+        ========================= -->
+
+        <section class="seccion">
+
+            <div class="futuro">
+
+                <div class="etiqueta-seccion">
+                    HACIA ADELANTE
+                </div>
+
+                <h2>
+                    Xontrex apenas está comenzando.
+                </h2>
+
+                <p>
+
+                    El mundo digital continúa evolucionando,
+                    y con él también evolucionan las oportunidades.
+                    Queremos construir una marca capaz de crecer,
+                    aprender y desarrollar nuevas formas de ayudar
+                    a nuestros clientes a destacar.
+
+                </p>
+
+
+                <div class="botones">
+
+                    <a href="../servicios/" class="boton boton-principal">
+                        Ver servicios
+                    </a>
+
+                    <a href="../contactos/" class="boton boton-contacto">
+                        Contactar con Xontrex
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
     <footer>
 
-        <p>
+        <div class="footer-contenido">
+
+            <div class="footer-logo">
+                XONTREX
+            </div>
+
+
+            <div class="footer-links">
+
+                <a href="../index.html">
+                    Inicio
+                </a>
+
+                <a href="./">
+                    Nosotros
+                </a>
+
+                <a href="../servicios/">
+                    Servicios
+                </a>
+
+                <a href="../esencia/">
+                    Esencia
+                </a>
+
+                <a href="../contactos/">
+                    Contactos
+                </a>
+
+            </div>
+
+        </div>
+
+
+        <div class="copyright">
+
             © 2026 Xontrex. Todos los derechos reservados.
-        </p>
+
+        </div>
 
     </footer>
 
 
 </body>
+
 </html>
