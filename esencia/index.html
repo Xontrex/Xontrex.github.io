@@ -1,1 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Nuestra esencia | Xontrex</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #111827;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background-color: #071a3d;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .volver {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 10px 18px;
+            border: 1px solid rgba(255,255,255,0.5);
+            border-radius: 8px;
+            transition: 0.3s;
+        }
+
+        .volver:hover {
+            background-color: white;
+            color: #071a3d;
+        }
+
+
+        /* PRESENTACIÓN */
+
+        .hero {
+            background-color: #071a3d;
+            color: white;
+            text-align: center;
+            padding: 75px 20px;
+        }
+
+        .hero h1 {
+            font-size: 44px;
+            margin-bottom: 18px;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: auto;
+            font-size: 18px;
+            line-height: 1.7;
+            color: #dbe4f3;
+        }
+
+
+        /* CONTENIDO */
+
+        .contenido {
+            max-width: 1100px;
+            margin: 65px auto;
+            padding: 0 20px;
+        }
+
+
+        /* TARJETAS */
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .tarjeta {
+            background-color: white;
+            padding: 40px 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .tarjeta:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.10);
+        }
+
+        .icono {
+            width: 65px;
+            height: 65px;
+            margin: 0 auto 22px;
+            background-color: #071a3d;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .tarjeta h2 {
+            color: #071a3d;
+            font-size: 25px;
+            margin-bottom: 18px;
+        }
+
+        .tarjeta p {
+            color: #4b5563;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+
+        /* FRASE FINAL */
+
+        .frase-final {
+            margin-top: 40px;
+            background-color: #071a3d;
+            color: white;
+            padding: 45px 30px;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .frase-final h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .frase-final p {
+            max-width: 750px;
+            margin: auto;
+            color: #dbe4f3;
+            line-height: 1.7;
+        }
+
+
+        /* BOTÓN */
+
+        .boton {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 24px;
+            background-color: white;
+            color: #071a3d;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .boton:hover {
+            transform: scale(1.04);
+        }
+
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            background-color: #071a3d;
+            color: white;
+            text-align: center;
+            padding: 25px;
+            margin-top: 70px;
+        }
+
+        footer p {
+            font-size: 14px;
+            color: #dbe4f3;
+        }
+
+
+        /* CELULARES */
+
+        @media (max-width: 800px) {
+
+            .tarjetas {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .tarjeta {
+                padding: 35px 25px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            header {
+                padding: 18px 5%;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .volver {
+                font-size: 13px;
+                padding: 8px 12px;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <a href="../index.html" class="logo">
+            XONTREX
+        </a>
+
+        <a href="../index.html" class="volver">
+            Volver al inicio
+        </a>
+
+    </header>
+
+
+    <!-- PRESENTACIÓN -->
+
+    <section class="hero">
+
+        <h1>Nuestra esencia</h1>
+
+        <p>
+            Lo que representa Xontrex, los principios que nos guían
+            y la visión que tenemos para el futuro.
+        </p>
+
+    </section>
+
+
+    <!-- MISIÓN, VISIÓN Y VALORES -->
+
+    <section class="contenido">
+
+        <div class="tarjetas">
+
+
+            <!-- MISIÓN -->
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    M
+                </div>
+
+                <h2>Misión</h2>
+
+                <p>
+                    Ayudar a negocios, emprendedores y proyectos a
+                    desarrollar una presencia digital sólida mediante
+                    soluciones creativas, estratégicas y accesibles que
+                    les permitan conectar con su audiencia y crecer.
+                </p>
+
+            </div>
+
+
+            <!-- VISIÓN -->
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    V
+                </div>
+
+                <h2>Visión</h2>
+
+                <p>
+                    Convertirnos en una marca digital reconocida por
+                    impulsar el crecimiento de negocios y proyectos,
+                    creando nuevas oportunidades a través de la
+                    innovación, la creatividad y la tecnología.
+                </p>
+
+            </div>
+
+
+            <!-- VALORES -->
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    V
+                </div>
+
+                <h2>Valores</h2>
+
+                <p>
+                    Creatividad, innovación, compromiso, responsabilidad,
+                    transparencia y orientación al crecimiento. Estos
+                    principios forman parte de la manera en que Xontrex
+                    busca desarrollar cada proyecto.
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- FRASE FINAL -->
+
+        <div class="frase-final">
+
+            <h2>Construimos el futuro de forma digital</h2>
+
+            <p>
+                En Xontrex creemos que la tecnología y la creatividad
+                pueden convertir una idea en una oportunidad.
+            </p>
+
+            <a href="../servicios/" class="boton">
+                Conoce nuestros servicios
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 Xontrex. Todos los derechos reservados.
+        </p>
+
+    </footer>
+
+
+</body>
+</html>
