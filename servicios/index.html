@@ -1,20 +1,33 @@
-
+```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="description" content="Conoce los servicios digitales de Xontrex para ayudar a negocios a construir, organizar y mejorar su presencia digital.">
+    <meta name="description"
+        content="Conoce los servicios digitales de Xontrex para ayudar a negocios a construir, organizar y mejorar su presencia digital.">
+
+    <meta name="theme-color" content="#071a3d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <title>Servicios | Xontrex</title>
 
+
     <style>
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         html {
@@ -22,115 +35,362 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #07152d;
-            color: #ffffff;
-            line-height: 1.6;
+            background: #071a3d;
+            color: white;
+            overflow-x: hidden;
         }
 
         a {
-            color: inherit;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .contenedor {
-            width: 90%;
-            max-width: 1150px;
-            margin: auto;
-        }
 
         /* =========================
-           NAVEGACIÓN
+           BARRA DE PROGRESO
         ========================= */
 
-        nav {
+        .barra-progreso {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 0%;
+            height: 3px;
+
+            background: #5b94ff;
+
+            z-index: 2000;
+
+            box-shadow: 0 0 12px rgba(91,148,255,0.7);
+        }
+
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
             position: sticky;
             top: 0;
             z-index: 1000;
-            background: rgba(7, 21, 45, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-        }
 
-        .nav-contenido {
-            min-height: 75px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+
+            padding: 19px 8%;
+
+            background: rgba(7,26,61,0.82);
+
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            transition: 0.35s;
         }
 
-        .nav-logo {
-            font-size: 24px;
-            font-weight: 900;
-            letter-spacing: 3px;
-            text-decoration: none;
+        header.scrolled {
+            padding-top: 14px;
+            padding-bottom: 14px;
+
+            background: rgba(5,19,46,0.94);
+
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
-        .nav-enlace {
+        .logo {
+            color: white;
+
             text-decoration: none;
-            color: #b9c3d4;
-            font-size: 15px;
+
+            font-size: 27px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
             transition: 0.3s;
         }
 
-        .nav-enlace:hover {
-            color: #ffffff;
+        .logo:hover {
+            transform: scale(1.04);
         }
+
+        nav {
+            display: flex;
+
+            align-items: center;
+
+            gap: 30px;
+        }
+
+        nav a {
+            position: relative;
+
+            color: #dbe4f3;
+
+            text-decoration: none;
+
+            font-size: 14px;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: white;
+        }
+
+        nav a::after {
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: -7px;
+
+            width: 0;
+
+            height: 2px;
+
+            background: #5b94ff;
+
+            transition: 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
 
         /* =========================
            HERO
         ========================= */
 
         .hero {
-            padding: 125px 20px 110px;
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
             text-align: center;
+
+            padding: 90px 20px 100px;
+
             position: relative;
+
             overflow: hidden;
         }
 
         .hero::before {
             content: "";
+
             position: absolute;
+
             width: 500px;
+
             height: 500px;
-            background: rgba(52, 105, 190, 0.13);
-            filter: blur(100px);
-            border-radius: 50%;
-            top: -220px;
+
+            background: #1468ff;
+
+            filter: blur(180px);
+
+            opacity: 0.14;
+
+            top: -240px;
+
             left: 50%;
+
             transform: translateX(-50%);
+
+            animation: moverLuz 7s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            background: #1769ff;
+
+            filter: blur(140px);
+
+            opacity: 0.08;
+
+            right: -100px;
+
+            bottom: -100px;
+
+            animation: moverLuz2 8s ease-in-out infinite alternate;
+        }
+
+        .hero-contenido {
+            position: relative;
+
+            z-index: 2;
+
+            max-width: 850px;
         }
 
         .etiqueta {
             display: inline-block;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.04);
-            padding: 8px 18px;
-            border-radius: 30px;
-            color: #c5cede;
-            font-size: 13px;
-            letter-spacing: 1px;
+
+            padding: 8px 17px;
+
             margin-bottom: 25px;
+
+            border-radius: 50px;
+
+            border: 1px solid rgba(91,148,255,0.35);
+
+            background: rgba(91,148,255,0.08);
+
+            color: #9abbff;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+
+            animation: aparecerArriba 0.8s ease forwards;
         }
 
         .hero h1 {
-            position: relative;
-            font-size: clamp(42px, 7vw, 75px);
+            font-size: clamp(43px, 7vw, 75px);
+
             line-height: 1.05;
+
             letter-spacing: -2px;
+
             margin-bottom: 25px;
+
+            font-weight: 900;
+
+            animation: aparecerArriba 0.9s ease forwards;
         }
 
         .hero h1 span {
-            color: #9fb5d8;
+            color: #5b94ff;
         }
 
         .hero p {
-            position: relative;
             max-width: 720px;
+
             margin: auto;
-            color: #aeb9cc;
-            font-size: 19px;
+
+            color: #bdcbe0;
+
+            font-size: 18px;
+
+            line-height: 1.8;
+
+            animation: aparecerArriba 1.1s ease forwards;
         }
+
+
+        /* =========================
+           INDICADOR DE SCROLL
+        ========================= */
+
+        .scroll-indicador {
+            position: absolute;
+
+            bottom: 30px;
+
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            gap: 8px;
+
+            color: #7185a3;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            z-index: 3;
+        }
+
+        .scroll-linea {
+            width: 1px;
+
+            height: 35px;
+
+            background: linear-gradient(
+                to bottom,
+                #5b94ff,
+                transparent
+            );
+
+            animation: scrollLinea 1.8s ease-in-out infinite;
+        }
+
+
+        /* =========================
+           CONTENEDOR
+        ========================= */
+
+        .contenedor {
+            width: 90%;
+
+            max-width: 1150px;
+
+            margin: auto;
+        }
+
+
+        /* =========================
+           ENCABEZADO DE SECCIÓN
+        ========================= */
+
+        .encabezado {
+            text-align: center;
+
+            margin-bottom: 55px;
+        }
+
+        .encabezado span {
+            color: #5b94ff;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .encabezado h2 {
+            font-size: 38px;
+
+            margin: 10px 0 15px;
+        }
+
+        .encabezado p {
+            color: #aebed5;
+
+            max-width: 680px;
+
+            margin: auto;
+
+            line-height: 1.8;
+        }
+
 
         /* =========================
            SERVICIOS
@@ -140,102 +400,168 @@
             padding: 90px 20px 120px;
         }
 
-        .encabezado {
-            text-align: center;
-            margin-bottom: 55px;
-        }
-
-        .encabezado h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-        }
-
-        .encabezado p {
-            color: #9da9bd;
-            max-width: 680px;
-            margin: auto;
-        }
-
         .grid-servicios {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+
+            grid-template-columns: repeat(2,1fr);
+
             gap: 24px;
         }
 
         .servicio {
             position: relative;
-            background: linear-gradient(
-                145deg,
-                #0d2142,
-                #0a1932
-            );
 
-            border: 1px solid rgba(255,255,255,0.09);
-            border-radius: 22px;
+            background:
+                linear-gradient(
+                    145deg,
+                    #0d244a,
+                    #091b38
+                );
+
+            border: 1px solid rgba(255,255,255,0.08);
+
+            border-radius: 20px;
+
             padding: 38px;
+
             overflow: hidden;
-            transition: 0.35s;
+
+            transition:
+                transform 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease,
+                background 0.4s ease;
+        }
+
+        .servicio::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 100%;
+
+            height: 2px;
+
+            background: #5b94ff;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: 0.4s;
+        }
+
+        .servicio:hover::before {
+            transform: scaleX(1);
         }
 
         .servicio::after {
             content: "";
+
             position: absolute;
-            width: 150px;
-            height: 150px;
-            background: rgba(255,255,255,0.025);
+
+            width: 170px;
+
+            height: 170px;
+
             border-radius: 50%;
-            right: -70px;
-            bottom: -70px;
+
+            background: rgba(91,148,255,0.035);
+
+            right: -80px;
+
+            bottom: -80px;
+
+            transition: 0.5s;
         }
 
         .servicio:hover {
-            transform: translateY(-7px);
-            border-color: rgba(255,255,255,0.2);
+            transform: translateY(-9px);
+
+            border-color: rgba(91,148,255,0.32);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #102952,
+                    #0b1d3b
+                );
+
+            box-shadow:
+                0 20px 45px rgba(0,0,0,0.18);
+        }
+
+        .servicio:hover::after {
+            transform: scale(1.25);
         }
 
         .numero {
-            color: #7185a5;
-            font-size: 14px;
+            color: #72a3ff;
+
+            font-size: 13px;
+
             font-weight: bold;
+
             letter-spacing: 2px;
+
             margin-bottom: 22px;
         }
 
         .servicio h3 {
             font-size: 25px;
+
             margin-bottom: 14px;
         }
 
         .servicio > p {
             color: #aeb9cc;
-            font-size: 16px;
+
+            font-size: 15px;
+
+            line-height: 1.75;
+
             margin-bottom: 25px;
         }
 
         .ideal {
             margin-bottom: 22px;
-            padding: 14px 16px;
+
+            padding: 15px 16px;
+
             border-radius: 12px;
+
             background: rgba(255,255,255,0.035);
+
             border: 1px solid rgba(255,255,255,0.06);
+
             color: #cbd4e3;
+
             font-size: 14px;
         }
 
         .ideal strong {
-            color: #ffffff;
+            color: white;
         }
 
         .incluye {
             border-top: 1px solid rgba(255,255,255,0.08);
+
             padding-top: 20px;
         }
 
         .incluye h4 {
             font-size: 13px;
+
             text-transform: uppercase;
+
             letter-spacing: 1.5px;
-            color: #ffffff;
+
+            color: white;
+
             margin-bottom: 13px;
         }
 
@@ -245,158 +571,571 @@
 
         .incluye li {
             color: #aeb9cc;
+
             font-size: 14px;
-            margin: 8px 0;
+
+            margin: 9px 0;
+
             padding-left: 18px;
+
             position: relative;
         }
 
         .incluye li::before {
             content: "•";
+
             position: absolute;
+
             left: 0;
-            color: #ffffff;
+
+            color: #5b94ff;
+
+            font-size: 18px;
+
+            line-height: 1;
         }
+
+
+        /* =========================
+           ANIMACIONES SCROLL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+
+            transform: translateX(-50px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+
+            transform: translateX(50px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+
+        /* Animación escalonada */
+
+        .servicio:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .servicio:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+
+        .servicio:nth-child(3) {
+            transition-delay: 0.19s;
+        }
+
+        .servicio:nth-child(4) {
+            transition-delay: 0.26s;
+        }
+
+        .servicio:nth-child(5) {
+            transition-delay: 0.33s;
+        }
+
+        .servicio:nth-child(6) {
+            transition-delay: 0.40s;
+        }
+
+        .servicio:nth-child(7) {
+            transition-delay: 0.47s;
+        }
+
+        .servicio:nth-child(8) {
+            transition-delay: 0.54s;
+        }
+
 
         /* =========================
            CTA
         ========================= */
 
         .cta {
-            padding: 30px 20px 120px;
+            padding: 20px 20px 120px;
         }
 
         .cta-caja {
-            max-width: 1000px;
+            max-width: 1050px;
+
             margin: auto;
-            padding: 65px 40px;
+
+            padding: 75px 30px;
+
             text-align: center;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.1);
-            background: linear-gradient(
-                135deg,
-                #10294f,
-                #0b1b36
-            );
+
+            border-radius: 22px;
+
+            background:
+                radial-gradient(
+                    circle at top,
+                    rgba(55,120,255,0.22),
+                    transparent 65%
+                ),
+                #0a2148;
+
+            border: 1px solid rgba(255,255,255,0.09);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .cta-caja::before {
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+
+            height: 200px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(91,148,255,0.10);
+
+            top: -100px;
+
+            left: -100px;
+        }
+
+        .cta-caja::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+
+            height: 250px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(91,148,255,0.08);
+
+            right: -125px;
+
+            bottom: -125px;
         }
 
         .cta h2 {
+            position: relative;
+
+            z-index: 2;
+
             font-size: 35px;
+
             margin-bottom: 15px;
         }
 
         .cta p {
-            color: #aeb9cc;
+            position: relative;
+
+            z-index: 2;
+
+            color: #b7c6dc;
+
             max-width: 620px;
+
             margin: 0 auto 30px;
+
+            line-height: 1.7;
         }
 
         .boton {
             display: inline-block;
+
+            position: relative;
+
+            z-index: 2;
+
             text-decoration: none;
-            background: #ffffff;
-            color: #07152d;
+
+            background: white;
+
+            color: #071a3d;
+
             padding: 14px 28px;
-            border-radius: 30px;
+
+            border-radius: 8px;
+
             font-weight: bold;
+
             transition: 0.3s;
+
+            overflow: hidden;
+        }
+
+        .boton::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+
+            left: -120%;
+
+            width: 100%;
+
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(91,148,255,0.20),
+                transparent
+            );
+
+            transition: 0.5s;
+        }
+
+        .boton:hover::before {
+            left: 120%;
         }
 
         .boton:hover {
-            transform: translateY(-3px);
-            opacity: 0.9;
+            transform: translateY(-4px);
+
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 30px 20px;
-            text-align: center;
-            color: #718096;
-            font-size: 13px;
+            background: #05132e;
+
+            border-top: 1px solid rgba(255,255,255,0.07);
+
+            padding: 50px 8% 35px;
         }
 
+        .footer-contenido {
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 30px;
+        }
+
+        .footer-logo {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            letter-spacing: 2px;
+        }
+
+        .footer-links {
+            display: flex;
+
+            gap: 25px;
+        }
+
+        .footer-links a {
+            color: #94a6c0;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 30px;
+
+            padding-top: 22px;
+
+            border-top: 1px solid rgba(255,255,255,0.06);
+
+            text-align: center;
+
+            color: #687b97;
+
+            font-size: 12px;
+        }
+
+
         /* =========================
-           RESPONSIVE
+           ANIMACIONES
         ========================= */
 
-        @media (max-width: 800px) {
+        @keyframes aparecerArriba {
+
+            from {
+                opacity: 0;
+
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+
+                transform: translateY(0);
+            }
+
+        }
+
+        @keyframes moverLuz {
+
+            from {
+                transform:
+                    translateX(-50%)
+                    translateY(0);
+            }
+
+            to {
+                transform:
+                    translateX(-50%)
+                    translateY(35px);
+            }
+
+        }
+
+        @keyframes moverLuz2 {
+
+            from {
+                transform:
+                    translate(0,0);
+            }
+
+            to {
+                transform:
+                    translate(-40px,-30px);
+            }
+
+        }
+
+        @keyframes scrollLinea {
+
+            0% {
+                opacity: 0;
+
+                transform: scaleY(0);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform: scaleY(1);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform:
+                    translateY(10px)
+                    scaleY(0.5);
+            }
+
+        }
+
+
+        /* =========================
+           TABLET
+        ========================= */
+
+        @media (max-width:850px) {
+
+            nav {
+                gap: 17px;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
 
             .grid-servicios {
                 grid-template-columns: 1fr;
             }
 
-            .hero {
-                padding-top: 90px;
-            }
-
-            .servicio {
-                padding: 30px;
-            }
-
-            .cta-caja {
-                padding: 50px 25px;
-            }
-
         }
 
-        @media (max-width: 500px) {
 
-            .nav-enlace {
-                font-size: 13px;
+        /* =========================
+           CELULAR
+        ========================= */
+
+        @media (max-width:600px) {
+
+            header {
+                padding: 18px 5%;
             }
 
-            .nav-logo {
-                font-size: 21px;
+            .logo {
+                font-size: 23px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                min-height: 75vh;
+
+                padding: 70px 20px 90px;
             }
 
             .hero h1 {
+                font-size: 43px;
+
                 letter-spacing: -1px;
             }
 
-            .encabezado h2,
+            .hero p {
+                font-size: 15px;
+            }
+
+            .scroll-indicador {
+                bottom: 20px;
+            }
+
+            .servicios {
+                padding: 65px 20px 90px;
+            }
+
+            .encabezado h2 {
+                font-size: 29px;
+            }
+
+            .servicio {
+                padding: 30px 25px;
+            }
+
+            .servicio h3 {
+                font-size: 22px;
+            }
+
+            .cta {
+                padding-bottom: 90px;
+            }
+
+            .cta-caja {
+                padding: 60px 22px;
+            }
+
             .cta h2 {
-                font-size: 30px;
+                font-size: 29px;
+            }
+
+            .footer-contenido {
+                flex-direction: column;
+
+                text-align: center;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+
+                justify-content: center;
             }
 
         }
 
     </style>
+
 </head>
+
 
 <body>
 
+
     <!-- =========================
-         NAVEGACIÓN
+         BARRA DE PROGRESO
     ========================= -->
 
-    <nav>
+    <div class="barra-progreso"></div>
 
-        <div class="contenedor nav-contenido">
 
-            <a href="../" class="nav-logo">
-                XONTREX
+    <!-- =========================
+         HEADER
+    ========================= -->
+
+    <header id="header">
+
+        <a href="../" class="logo">
+            XONTREX
+        </a>
+
+        <nav>
+
+            <a href="../">
+                Inicio
             </a>
 
-            <a href="../" class="nav-enlace">
-                ← Volver al inicio
+            <a href="../nosotros/">
+                Nosotros
             </a>
 
-        </div>
+            <a href="../servicios/">
+                Servicios
+            </a>
 
-    </nav>
+            <a href="../esencia/">
+                Nuestra esencia
+            </a>
+
+            <a href="../contactos/">
+                Contactos
+            </a>
+
+        </nav>
+
+    </header>
 
 
     <!-- =========================
          HERO
     ========================= -->
 
-    <header class="hero">
+    <section class="hero">
 
-        <div class="contenedor">
+        <div class="hero-contenido">
 
             <div class="etiqueta">
                 XONTREX | SERVICIOS DIGITALES
@@ -408,14 +1147,27 @@
             </h1>
 
             <p>
+
                 Ayudamos a negocios a construir, organizar y mejorar
                 su presencia digital mediante servicios adaptados
                 a sus necesidades.
+
             </p>
 
         </div>
 
-    </header>
+
+        <div class="scroll-indicador">
+
+            <span>
+                DESCUBRIR
+            </span>
+
+            <div class="scroll-linea"></div>
+
+        </div>
+
+    </section>
 
 
     <!-- =========================
@@ -426,17 +1178,23 @@
 
         <div class="contenedor">
 
-            <div class="encabezado">
+            <div class="encabezado reveal">
+
+                <span>
+                    LO QUE HACEMOS
+                </span>
 
                 <h2>
                     Nuestros servicios
                 </h2>
 
                 <p>
+
                     Desde la gestión de redes hasta la organización
                     de diferentes canales digitales, Xontrex ofrece
                     soluciones pensadas para las necesidades reales
                     de cada negocio.
+
                 </p>
 
             </div>
@@ -447,7 +1205,7 @@
 
                 <!-- SERVICIO 01 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-left">
 
                     <div class="numero">
                         01 / REDES
@@ -458,27 +1216,44 @@
                     </h3>
 
                     <p>
+
                         Organizamos y gestionamos la presencia de tu
                         negocio en Instagram y TikTok para mantener
                         una comunicación activa y estratégica.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que quieren
-                        mantener sus redes activas y organizadas.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que quieren mantener sus redes
+                        activas y organizadas.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Planificación de contenido</li>
+
                             <li>Publicaciones</li>
+
                             <li>Reels y TikToks</li>
+
                             <li>Historias</li>
+
                             <li>Organización del contenido</li>
-                            <li>Estrategias para mejorar la presencia digital</li>
+
+                            <li>
+                                Estrategias para mejorar la presencia digital
+                            </li>
+
                         </ul>
 
                     </div>
@@ -488,7 +1263,7 @@
 
                 <!-- SERVICIO 02 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-right">
 
                     <div class="numero">
                         02 / PERFILES
@@ -499,27 +1274,44 @@
                     </h3>
 
                     <p>
+
                         Optimizamos tus perfiles para que la información
                         de tu negocio sea clara, profesional y fácil
                         de encontrar para tus clientes.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios con perfiles
-                        incompletos, desorganizados o poco optimizados.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios con perfiles incompletos,
+                        desorganizados o poco optimizados.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Optimización de Instagram y TikTok</li>
+
                             <li>Biografía y descripción</li>
+
                             <li>Información de contacto</li>
+
                             <li>Organización de enlaces</li>
+
                             <li>Imagen del perfil</li>
-                            <li>Integración con herramientas como Beacons</li>
+
+                            <li>
+                                Integración con herramientas como Beacons
+                            </li>
+
                         </ul>
 
                     </div>
@@ -529,7 +1321,7 @@
 
                 <!-- SERVICIO 03 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-left">
 
                     <div class="numero">
                         03 / CONTENIDO
@@ -540,27 +1332,44 @@
                     </h3>
 
                     <p>
+
                         Creamos contenido visual y audiovisual para
                         mostrar tus productos, servicios y la identidad
                         de tu negocio en redes sociales.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que necesitan
-                        contenido atractivo y adaptado a redes.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que necesitan contenido atractivo
+                        y adaptado a redes.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Fotografía de productos</li>
+
                             <li>Grabación de videos</li>
+
                             <li>Reels y TikToks</li>
+
                             <li>Historias</li>
+
                             <li>Diseños para publicaciones</li>
-                            <li>Edición y adaptación para redes</li>
+
+                            <li>
+                                Edición y adaptación para redes
+                            </li>
+
                         </ul>
 
                     </div>
@@ -570,7 +1379,7 @@
 
                 <!-- SERVICIO 04 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-right">
 
                     <div class="numero">
                         04 / MENÚS
@@ -581,27 +1390,44 @@
                     </h3>
 
                     <p>
+
                         Creamos menús digitales modernos, organizados
                         y adaptados a celulares para que tus clientes
                         puedan consultar tus productos fácilmente.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> restaurantes,
-                        cafeterías, reposterías y negocios gastronómicos.
+
+                        <strong>Ideal para:</strong>
+
+                        restaurantes, cafeterías, reposterías
+                        y negocios gastronómicos.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Categorías de productos</li>
+
                             <li>Precios y descripciones</li>
+
                             <li>Fotografías</li>
+
                             <li>Diseño adaptado a celulares</li>
+
                             <li>URL personalizada</li>
-                            <li>Preparación para código QR</li>
+
+                            <li>
+                                Preparación para código QR
+                            </li>
+
                         </ul>
 
                     </div>
@@ -611,7 +1437,7 @@
 
                 <!-- SERVICIO 05 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-left">
 
                     <div class="numero">
                         05 / MANTENIMIENTO
@@ -622,27 +1448,42 @@
                     </h3>
 
                     <p>
+
                         Mantenemos actualizada la información de tus
                         servicios digitales para que los datos de tu
                         negocio sigan siendo correctos.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que necesitan
-                        actualizar constantemente sus menús o información.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que necesitan actualizar
+                        constantemente sus menús o información.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Cambios de precios</li>
+
                             <li>Agregar o eliminar productos</li>
+
                             <li>Actualización de fotografías</li>
+
                             <li>Cambios en categorías</li>
+
                             <li>Actualización de información</li>
+
                             <li>Mantenimiento de enlaces</li>
+
                         </ul>
 
                     </div>
@@ -652,7 +1493,7 @@
 
                 <!-- SERVICIO 06 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-right">
 
                     <div class="numero">
                         06 / PUBLICIDAD
@@ -663,27 +1504,42 @@
                     </h3>
 
                     <p>
+
                         Creamos y gestionamos campañas digitales orientadas
                         a llegar al público objetivo de tu negocio y
                         optimizamos su rendimiento.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que quieren
-                        promocionar productos, servicios u ofertas.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que quieren promocionar productos,
+                        servicios u ofertas.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Preparación de campañas</li>
+
                             <li>Definición del público objetivo</li>
+
                             <li>Adaptación de anuncios</li>
+
                             <li>Configuración de campañas</li>
+
                             <li>Seguimiento de resultados</li>
+
                             <li>Recomendaciones de optimización</li>
+
                         </ul>
 
                     </div>
@@ -693,7 +1549,7 @@
 
                 <!-- SERVICIO 07 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-left">
 
                     <div class="numero">
                         07 / PRESENCIA DIGITAL
@@ -704,27 +1560,44 @@
                     </h3>
 
                     <p>
+
                         Organizamos los principales canales digitales
                         de tu negocio para crear una presencia más clara,
                         conectada y profesional.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que necesitan
-                        ordenar su presencia en Internet.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que necesitan ordenar su presencia
+                        en Internet.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Instagram y TikTok</li>
+
                             <li>Google</li>
+
                             <li>WhatsApp</li>
+
                             <li>Menú digital</li>
+
                             <li>Beacons y enlaces</li>
-                            <li>Organización de información digital</li>
+
+                            <li>
+                                Organización de información digital
+                            </li>
+
                         </ul>
 
                     </div>
@@ -734,7 +1607,7 @@
 
                 <!-- SERVICIO 08 -->
 
-                <article class="servicio">
+                <article class="servicio reveal-right">
 
                     <div class="numero">
                         08 / GOOGLE
@@ -745,28 +1618,44 @@
                     </h3>
 
                     <p>
+
                         Optimizamos el Perfil de Empresa de Google para
                         que la información de tu negocio esté completa,
                         actualizada y correctamente presentada.
+
                     </p>
 
                     <div class="ideal">
-                        <strong>Ideal para:</strong> negocios que quieren
-                        mejorar la información que encuentran sus clientes
-                        en Google.
+
+                        <strong>Ideal para:</strong>
+
+                        negocios que quieren mejorar la información
+                        que encuentran sus clientes en Google.
+
                     </div>
 
                     <div class="incluye">
 
-                        <h4>Incluye</h4>
+                        <h4>
+                            Incluye
+                        </h4>
 
                         <ul>
+
                             <li>Optimización del Perfil de Empresa</li>
+
                             <li>Información y horarios</li>
+
                             <li>Categorías y descripción</li>
+
                             <li>Fotografías</li>
+
                             <li>Ubicación y datos de contacto</li>
-                            <li>Orientación sobre reseñas</li>
+
+                            <li>
+                                Orientación sobre reseñas
+                            </li>
+
                         </ul>
 
                     </div>
@@ -785,7 +1674,7 @@
          CTA
     ========================= -->
 
-    <section class="cta">
+    <section class="cta reveal">
 
         <div class="cta-caja">
 
@@ -794,8 +1683,10 @@
             </h2>
 
             <p>
+
                 Cuéntanos qué necesita tu negocio y descubre qué solución
                 de Xontrex puede ayudarte a dar el siguiente paso.
+
             </p>
 
             <a href="/nosotros/" class="boton">
@@ -813,13 +1704,182 @@
 
     <footer>
 
-        <p>
+        <div class="footer-contenido">
+
+            <div class="footer-logo">
+                XONTREX
+            </div>
+
+            <div class="footer-links">
+
+                <a href="../nosotros/">
+                    Nosotros
+                </a>
+
+                <a href="../servicios/">
+                    Servicios
+                </a>
+
+                <a href="../esencia/">
+                    Esencia
+                </a>
+
+                <a href="../contactos/">
+                    Contactos
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="copyright">
+
             © 2026 Xontrex. Todos los derechos reservados.
-        </p>
+
+        </div>
 
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+
+        /* =========================
+           HEADER AL HACER SCROLL
+        ========================= */
+
+        const header =
+            document.getElementById("header");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 40) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        });
+
+
+        /* =========================
+           BARRA DE PROGRESO
+        ========================= */
+
+        const barra =
+            document.querySelector(".barra-progreso");
+
+        window.addEventListener("scroll", () => {
+
+            const scrollTop =
+                window.scrollY;
+
+            const alturaPagina =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const progreso =
+                (scrollTop / alturaPagina) * 100;
+
+            barra.style.width =
+                progreso + "%";
+
+        });
+
+
+        /* =========================
+           ANIMACIONES AL HACER SCROLL
+        ========================= */
+
+        const elementosReveal =
+            document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right"
+            );
+
+
+        const observer =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add(
+                                "active"
+                            );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        elementosReveal.forEach((elemento) => {
+
+            observer.observe(elemento);
+
+        });
+
+
+        /* =========================
+           SERVICE WORKER
+           Preparado para la futura PWA
+        ========================= */
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener(
+                "load",
+                () => {
+
+                    navigator.serviceWorker
+                        .register("/service-worker.js")
+                        .then(() => {
+
+                            console.log(
+                                "Xontrex: Service Worker registrado."
+                            );
+
+                        })
+                        .catch((error) => {
+
+                            console.log(
+                                "Xontrex: Service Worker todavía no está disponible.",
+                                error
+                            );
+
+                        });
+
+                }
+            );
+
+        }
+
+    </script>
+
+
 </body>
+
 </html>
 ```
