@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -59,7 +58,7 @@
 
             background: #5b94ff;
 
-            z-index: 2000;
+            z-index: 3000;
 
             box-shadow: 0 0 12px rgba(91,148,255,0.7);
         }
@@ -72,7 +71,7 @@
         header {
             position: sticky;
             top: 0;
-            z-index: 1000;
+            z-index: 2000;
 
             display: flex;
             align-items: center;
@@ -99,6 +98,11 @@
             box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
+
+        /* =========================
+           LOGO
+        ========================= */
+
         .logo {
             color: white;
 
@@ -116,6 +120,11 @@
         .logo:hover {
             transform: scale(1.04);
         }
+
+
+        /* =========================
+           NAVEGACIÓN
+        ========================= */
 
         nav {
             display: flex;
@@ -161,6 +170,71 @@
 
         nav a:hover::after {
             width: 100%;
+        }
+
+
+        /* =========================
+           BOTÓN FLOTANTE VOLVER
+        ========================= */
+
+        .boton-inicio {
+            position: fixed;
+
+            top: 84px;
+            right: 25px;
+
+            z-index: 2500;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 9px 15px;
+
+            border-radius: 9px;
+
+            color: #dbe4f3;
+
+            text-decoration: none;
+
+            font-size: 13px;
+
+            font-weight: bold;
+
+            background: rgba(7,26,61,0.78);
+
+            border: 1px solid rgba(255,255,255,0.12);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+
+            transition:
+                color 0.3s ease,
+                background 0.3s ease,
+                border-color 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .boton-inicio:hover {
+            color: white;
+
+            background: rgba(91,148,255,0.14);
+
+            border-color: rgba(91,148,255,0.45);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 28px rgba(0,0,0,0.22),
+                0 0 18px rgba(91,148,255,0.10);
+        }
+
+        .boton-inicio:active {
+            transform: scale(0.96);
         }
 
 
@@ -403,7 +477,7 @@
         .grid-servicios {
             display: grid;
 
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(2, 1fr);
 
             gap: 24px;
         }
@@ -541,6 +615,8 @@
             color: #cbd4e3;
 
             font-size: 14px;
+
+            line-height: 1.6;
         }
 
         .ideal strong {
@@ -579,6 +655,8 @@
             padding-left: 18px;
 
             position: relative;
+
+            line-height: 1.5;
         }
 
         .incluye li::before {
@@ -597,7 +675,7 @@
 
 
         /* =========================
-           ANIMACIONES SCROLL
+           ANIMACIONES DE SCROLL
         ========================= */
 
         .reveal {
@@ -649,7 +727,9 @@
         }
 
 
-        /* Animación escalonada */
+        /* =========================
+           ANIMACIÓN ESCALONADA
+        ========================= */
 
         .servicio:nth-child(1) {
             transition-delay: 0.05s;
@@ -1015,6 +1095,18 @@
                 display: none;
             }
 
+            .boton-inicio {
+                top: 72px;
+
+                right: 15px;
+
+                padding: 8px 12px;
+
+                font-size: 12px;
+
+                border-radius: 8px;
+            }
+
             .hero {
                 min-height: 75vh;
 
@@ -1102,6 +1194,7 @@
             XONTREX
         </a>
 
+
         <nav>
 
             <a href="../">
@@ -1127,6 +1220,16 @@
         </nav>
 
     </header>
+
+
+    <!-- =========================
+         BOTÓN FLOTANTE
+         VOLVER A INICIO
+    ========================= -->
+
+    <a href="../" class="boton-inicio">
+        ← Inicio
+    </a>
 
 
     <!-- =========================
@@ -1203,7 +1306,7 @@
             <div class="grid-servicios">
 
 
-                <!-- SERVICIO 01 -->
+                <!-- 01 -->
 
                 <article class="servicio reveal-left">
 
@@ -1216,20 +1319,15 @@
                     </h3>
 
                     <p>
-
                         Organizamos y gestionamos la presencia de tu
                         negocio en Instagram y TikTok para mantener
                         una comunicación activa y estratégica.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que quieren mantener sus redes
                         activas y organizadas.
-
                     </div>
 
                     <div class="incluye">
@@ -1239,21 +1337,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Planificación de contenido</li>
-
                             <li>Publicaciones</li>
-
                             <li>Reels y TikToks</li>
-
                             <li>Historias</li>
-
                             <li>Organización del contenido</li>
-
-                            <li>
-                                Estrategias para mejorar la presencia digital
-                            </li>
-
+                            <li>Estrategias para mejorar la presencia digital</li>
                         </ul>
 
                     </div>
@@ -1261,7 +1350,7 @@
                 </article>
 
 
-                <!-- SERVICIO 02 -->
+                <!-- 02 -->
 
                 <article class="servicio reveal-right">
 
@@ -1274,20 +1363,15 @@
                     </h3>
 
                     <p>
-
                         Optimizamos tus perfiles para que la información
                         de tu negocio sea clara, profesional y fácil
                         de encontrar para tus clientes.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios con perfiles incompletos,
                         desorganizados o poco optimizados.
-
                     </div>
 
                     <div class="incluye">
@@ -1297,21 +1381,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Optimización de Instagram y TikTok</li>
-
                             <li>Biografía y descripción</li>
-
                             <li>Información de contacto</li>
-
                             <li>Organización de enlaces</li>
-
                             <li>Imagen del perfil</li>
-
-                            <li>
-                                Integración con herramientas como Beacons
-                            </li>
-
+                            <li>Integración con herramientas como Beacons</li>
                         </ul>
 
                     </div>
@@ -1319,7 +1394,7 @@
                 </article>
 
 
-                <!-- SERVICIO 03 -->
+                <!-- 03 -->
 
                 <article class="servicio reveal-left">
 
@@ -1332,20 +1407,15 @@
                     </h3>
 
                     <p>
-
                         Creamos contenido visual y audiovisual para
                         mostrar tus productos, servicios y la identidad
                         de tu negocio en redes sociales.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que necesitan contenido atractivo
                         y adaptado a redes.
-
                     </div>
 
                     <div class="incluye">
@@ -1355,21 +1425,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Fotografía de productos</li>
-
                             <li>Grabación de videos</li>
-
                             <li>Reels y TikToks</li>
-
                             <li>Historias</li>
-
                             <li>Diseños para publicaciones</li>
-
-                            <li>
-                                Edición y adaptación para redes
-                            </li>
-
+                            <li>Edición y adaptación para redes</li>
                         </ul>
 
                     </div>
@@ -1377,7 +1438,7 @@
                 </article>
 
 
-                <!-- SERVICIO 04 -->
+                <!-- 04 -->
 
                 <article class="servicio reveal-right">
 
@@ -1390,20 +1451,15 @@
                     </h3>
 
                     <p>
-
                         Creamos menús digitales modernos, organizados
                         y adaptados a celulares para que tus clientes
                         puedan consultar tus productos fácilmente.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         restaurantes, cafeterías, reposterías
                         y negocios gastronómicos.
-
                     </div>
 
                     <div class="incluye">
@@ -1413,21 +1469,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Categorías de productos</li>
-
                             <li>Precios y descripciones</li>
-
                             <li>Fotografías</li>
-
                             <li>Diseño adaptado a celulares</li>
-
                             <li>URL personalizada</li>
-
-                            <li>
-                                Preparación para código QR
-                            </li>
-
+                            <li>Preparación para código QR</li>
                         </ul>
 
                     </div>
@@ -1435,7 +1482,7 @@
                 </article>
 
 
-                <!-- SERVICIO 05 -->
+                <!-- 05 -->
 
                 <article class="servicio reveal-left">
 
@@ -1448,20 +1495,15 @@
                     </h3>
 
                     <p>
-
                         Mantenemos actualizada la información de tus
                         servicios digitales para que los datos de tu
                         negocio sigan siendo correctos.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que necesitan actualizar
                         constantemente sus menús o información.
-
                     </div>
 
                     <div class="incluye">
@@ -1471,19 +1513,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Cambios de precios</li>
-
                             <li>Agregar o eliminar productos</li>
-
                             <li>Actualización de fotografías</li>
-
                             <li>Cambios en categorías</li>
-
                             <li>Actualización de información</li>
-
                             <li>Mantenimiento de enlaces</li>
-
                         </ul>
 
                     </div>
@@ -1491,7 +1526,7 @@
                 </article>
 
 
-                <!-- SERVICIO 06 -->
+                <!-- 06 -->
 
                 <article class="servicio reveal-right">
 
@@ -1504,20 +1539,15 @@
                     </h3>
 
                     <p>
-
                         Creamos y gestionamos campañas digitales orientadas
                         a llegar al público objetivo de tu negocio y
                         optimizamos su rendimiento.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que quieren promocionar productos,
                         servicios u ofertas.
-
                     </div>
 
                     <div class="incluye">
@@ -1527,19 +1557,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Preparación de campañas</li>
-
                             <li>Definición del público objetivo</li>
-
                             <li>Adaptación de anuncios</li>
-
                             <li>Configuración de campañas</li>
-
                             <li>Seguimiento de resultados</li>
-
                             <li>Recomendaciones de optimización</li>
-
                         </ul>
 
                     </div>
@@ -1547,7 +1570,7 @@
                 </article>
 
 
-                <!-- SERVICIO 07 -->
+                <!-- 07 -->
 
                 <article class="servicio reveal-left">
 
@@ -1560,20 +1583,15 @@
                     </h3>
 
                     <p>
-
                         Organizamos los principales canales digitales
                         de tu negocio para crear una presencia más clara,
                         conectada y profesional.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que necesitan ordenar su presencia
                         en Internet.
-
                     </div>
 
                     <div class="incluye">
@@ -1583,21 +1601,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Instagram y TikTok</li>
-
                             <li>Google</li>
-
                             <li>WhatsApp</li>
-
                             <li>Menú digital</li>
-
                             <li>Beacons y enlaces</li>
-
-                            <li>
-                                Organización de información digital
-                            </li>
-
+                            <li>Organización de información digital</li>
                         </ul>
 
                     </div>
@@ -1605,7 +1614,7 @@
                 </article>
 
 
-                <!-- SERVICIO 08 -->
+                <!-- 08 -->
 
                 <article class="servicio reveal-right">
 
@@ -1618,20 +1627,15 @@
                     </h3>
 
                     <p>
-
                         Optimizamos el Perfil de Empresa de Google para
                         que la información de tu negocio esté completa,
                         actualizada y correctamente presentada.
-
                     </p>
 
                     <div class="ideal">
-
                         <strong>Ideal para:</strong>
-
                         negocios que quieren mejorar la información
                         que encuentran sus clientes en Google.
-
                     </div>
 
                     <div class="incluye">
@@ -1641,21 +1645,12 @@
                         </h4>
 
                         <ul>
-
                             <li>Optimización del Perfil de Empresa</li>
-
                             <li>Información y horarios</li>
-
                             <li>Categorías y descripción</li>
-
                             <li>Fotografías</li>
-
                             <li>Ubicación y datos de contacto</li>
-
-                            <li>
-                                Orientación sobre reseñas
-                            </li>
-
+                            <li>Orientación sobre reseñas</li>
                         </ul>
 
                     </div>
@@ -1683,10 +1678,8 @@
             </h2>
 
             <p>
-
                 Cuéntanos qué necesita tu negocio y descubre qué solución
                 de Xontrex puede ayudarte a dar el siguiente paso.
-
             </p>
 
             <a href="/nosotros/" class="boton">
@@ -1733,9 +1726,7 @@
         </div>
 
         <div class="copyright">
-
             © 2026 Xontrex. Todos los derechos reservados.
-
         </div>
 
     </footer>
@@ -1746,7 +1737,6 @@
     ========================= -->
 
     <script>
-
 
         /* =========================
            HEADER AL HACER SCROLL
@@ -1804,7 +1794,6 @@
                 ".reveal, .reveal-left, .reveal-right"
             );
 
-
         const observer =
             new IntersectionObserver(
 
@@ -1814,9 +1803,7 @@
 
                         if (entry.isIntersecting) {
 
-                            entry.target.classList.add(
-                                "active"
-                            );
+                            entry.target.classList.add("active");
 
                             observer.unobserve(
                                 entry.target
@@ -1844,7 +1831,7 @@
 
         /* =========================
            SERVICE WORKER
-           Preparado para la futura PWA
+           PREPARADO PARA LA PWA
         ========================= */
 
         if ("serviceWorker" in navigator) {
@@ -1882,4 +1869,3 @@
 </body>
 
 </html>
-```
