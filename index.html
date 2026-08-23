@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 
@@ -5,6 +6,10 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#071a3d">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
     <title>Xontrex | Soluciones digitales</title>
 
@@ -31,6 +36,26 @@
             overflow-x: hidden;
         }
 
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+        /* =========================
+           BARRA DE PROGRESO
+        ========================= */
+
+        .barra-progreso {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: #5b94ff;
+            z-index: 2000;
+            box-shadow: 0 0 12px rgba(91,148,255,0.7);
+        }
+
 
         /* =========================
            HEADER
@@ -45,12 +70,22 @@
             align-items: center;
             justify-content: space-between;
 
-            padding: 20px 8%;
+            padding: 19px 8%;
 
-            background: rgba(7, 26, 61, 0.88);
-            backdrop-filter: blur(14px);
+            background: rgba(7, 26, 61, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
 
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+
+            transition: 0.35s;
+        }
+
+        header.scrolled {
+            padding-top: 14px;
+            padding-bottom: 14px;
+            background: rgba(5,19,46,0.94);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
         }
 
         .logo {
@@ -79,7 +114,6 @@
             position: relative;
 
             color: #dbe4f3;
-
             text-decoration: none;
 
             font-size: 14px;
@@ -117,7 +151,7 @@
         ========================= */
 
         .hero {
-            min-height: 78vh;
+            min-height: 88vh;
 
             display: flex;
             align-items: center;
@@ -125,39 +159,60 @@
 
             text-align: center;
 
-            padding: 80px 20px;
+            padding: 90px 20px 100px;
 
             position: relative;
 
             overflow: hidden;
         }
 
+        /* Luces de fondo */
+
         .hero::before {
             content: "";
 
             position: absolute;
 
-            width: 420px;
-            height: 420px;
+            width: 500px;
+            height: 500px;
 
             background: #1468ff;
 
             filter: blur(180px);
+            opacity: 0.15;
 
-            opacity: 0.14;
-
-            top: -220px;
+            top: -240px;
             left: 50%;
 
             transform: translateX(-50%);
+
+            animation: moverLuz 7s ease-in-out infinite alternate;
+        }
+
+        .hero::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            background: #1769ff;
+
+            filter: blur(140px);
+            opacity: 0.08;
+
+            right: -100px;
+            bottom: -100px;
+
+            animation: moverLuz2 8s ease-in-out infinite alternate;
         }
 
         .hero-contenido {
             position: relative;
+            z-index: 2;
 
-            max-width: 850px;
-
-            animation: aparecer 1s ease;
+            max-width: 900px;
         }
 
         .etiqueta {
@@ -180,6 +235,8 @@
             font-weight: bold;
 
             letter-spacing: 2px;
+
+            animation: aparecerArriba 0.8s ease forwards;
         }
 
         .hero h1 {
@@ -200,8 +257,14 @@
                 #ffffff
             );
 
+            background-size: 200% auto;
+
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+
+            animation:
+                aparecerArriba 0.9s ease forwards,
+                brilloTexto 5s linear infinite;
         }
 
         .hero h2 {
@@ -210,6 +273,8 @@
             line-height: 1.25;
 
             margin-bottom: 20px;
+
+            animation: aparecerArriba 1s ease forwards;
         }
 
         .hero h2 span {
@@ -226,6 +291,8 @@
             font-size: 17px;
 
             line-height: 1.8;
+
+            animation: aparecerArriba 1.1s ease forwards;
         }
 
 
@@ -245,6 +312,8 @@
             flex-wrap: wrap;
 
             margin-top: 32px;
+
+            animation: aparecerArriba 1.2s ease forwards;
         }
 
         .boton {
@@ -261,6 +330,35 @@
             font-size: 14px;
 
             transition: 0.3s;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .boton::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: -120%;
+
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255,255,255,0.18),
+                transparent
+            );
+
+            transition: 0.5s;
+        }
+
+        .boton:hover::before {
+            left: 120%;
         }
 
         .boton-principal {
@@ -287,6 +385,8 @@
             background: rgba(255,255,255,0.10);
 
             transform: translateY(-4px);
+
+            border-color: rgba(91,148,255,0.45);
         }
 
         .boton-contacto {
@@ -307,6 +407,100 @@
 
 
         /* =========================
+           INDICADOR DE SCROLL
+        ========================= */
+
+        .scroll-indicador {
+            position: absolute;
+
+            bottom: 30px;
+            left: 50%;
+
+            transform: translateX(-50%);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            gap: 8px;
+
+            color: #7185a3;
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            z-index: 3;
+        }
+
+        .scroll-linea {
+            width: 1px;
+            height: 35px;
+
+            background: linear-gradient(
+                to bottom,
+                #5b94ff,
+                transparent
+            );
+
+            animation: scrollLinea 1.8s ease-in-out infinite;
+        }
+
+
+        /* =========================
+           ANIMACIONES DE SCROLL
+        ========================= */
+
+        .reveal {
+            opacity: 0;
+
+            transform: translateY(45px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+
+            transform: translateX(-50px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+
+            transform: translateX(50px);
+
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+
+            transform: translateX(0);
+        }
+
+
+        /* =========================
            INTRODUCCIÓN
         ========================= */
 
@@ -315,7 +509,7 @@
 
             margin: auto;
 
-            padding: 80px 25px;
+            padding: 110px 25px;
 
             text-align: center;
         }
@@ -356,7 +550,7 @@
 
             margin: auto;
 
-            padding: 70px 25px 100px;
+            padding: 80px 25px 120px;
         }
 
         .titulo-seccion {
@@ -390,7 +584,7 @@
         }
 
         .tarjeta {
-            padding: 32px 25px;
+            padding: 34px 27px;
 
             background: rgba(255,255,255,0.045);
 
@@ -398,15 +592,49 @@
 
             border-radius: 16px;
 
-            transition: 0.35s;
+            transition:
+                transform 0.4s ease,
+                background 0.4s ease,
+                border-color 0.4s ease,
+                box-shadow 0.4s ease;
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .tarjeta::before {
+            content: "";
+
+            position: absolute;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 2px;
+
+            background: #5b94ff;
+
+            transform: scaleX(0);
+
+            transform-origin: left;
+
+            transition: 0.4s;
+        }
+
+        .tarjeta:hover::before {
+            transform: scaleX(1);
         }
 
         .tarjeta:hover {
-            transform: translateY(-7px);
+            transform: translateY(-9px);
 
-            background: rgba(255,255,255,0.07);
+            background: rgba(255,255,255,0.065);
 
             border-color: rgba(91,148,255,0.35);
+
+            box-shadow: 0 18px 40px rgba(0,0,0,0.16);
         }
 
         .icono {
@@ -414,6 +642,7 @@
             height: 45px;
 
             display: flex;
+
             align-items: center;
             justify-content: center;
 
@@ -426,6 +655,14 @@
             color: #72a3ff;
 
             font-size: 20px;
+
+            transition: 0.4s;
+        }
+
+        .tarjeta:hover .icono {
+            transform: rotate(5deg) scale(1.08);
+
+            background: rgba(91,148,255,0.18);
         }
 
         .tarjeta h3 {
@@ -442,10 +679,47 @@
             line-height: 1.7;
         }
 
+
+        /* Animación escalonada */
+
+        .tarjeta:nth-child(1) {
+            transition-delay: 0.05s;
+        }
+
+        .tarjeta:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .tarjeta:nth-child(3) {
+            transition-delay: 0.25s;
+        }
+
         .ver-servicios {
             text-align: center;
 
             margin-top: 35px;
+        }
+
+
+        /* =========================
+           SEPARADOR
+        ========================= */
+
+        .separador {
+            width: 70%;
+
+            max-width: 700px;
+
+            height: 1px;
+
+            margin: 0 auto 100px;
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(91,148,255,0.35),
+                transparent
+            );
         }
 
 
@@ -456,9 +730,9 @@
         .cta {
             max-width: 1050px;
 
-            margin: 20px auto 100px;
+            margin: 20px auto 120px;
 
-            padding: 70px 30px;
+            padding: 75px 30px;
 
             text-align: center;
 
@@ -473,12 +747,52 @@
                 #0a2148;
 
             border: 1px solid rgba(255,255,255,0.09);
+
+            position: relative;
+
+            overflow: hidden;
+        }
+
+        .cta::before {
+            content: "";
+
+            position: absolute;
+
+            width: 200px;
+            height: 200px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(91,148,255,0.10);
+
+            top: -100px;
+            left: -100px;
+        }
+
+        .cta::after {
+            content: "";
+
+            position: absolute;
+
+            width: 250px;
+            height: 250px;
+
+            border-radius: 50%;
+
+            border: 1px solid rgba(91,148,255,0.08);
+
+            right: -125px;
+            bottom: -125px;
         }
 
         .cta h2 {
             font-size: 35px;
 
             margin-bottom: 14px;
+
+            position: relative;
+
+            z-index: 2;
         }
 
         .cta p {
@@ -489,10 +803,18 @@
             margin: auto;
 
             line-height: 1.7;
+
+            position: relative;
+
+            z-index: 2;
         }
 
         .cta .boton {
             margin-top: 28px;
+
+            position: relative;
+
+            z-index: 2;
         }
 
 
@@ -505,7 +827,7 @@
 
             border-top: 1px solid rgba(255,255,255,0.07);
 
-            padding: 45px 8%;
+            padding: 50px 8% 35px;
         }
 
         .footer-contenido {
@@ -562,10 +884,10 @@
 
 
         /* =========================
-           ANIMACIÓN
+           ANIMACIONES
         ========================= */
 
-        @keyframes aparecer {
+        @keyframes aparecerArriba {
 
             from {
                 opacity: 0;
@@ -577,6 +899,64 @@
                 opacity: 1;
 
                 transform: translateY(0);
+            }
+
+        }
+
+        @keyframes brilloTexto {
+
+            0% {
+                background-position: 0% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+
+        }
+
+        @keyframes moverLuz {
+
+            from {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            to {
+                transform: translateX(-50%) translateY(35px);
+            }
+
+        }
+
+        @keyframes moverLuz2 {
+
+            from {
+                transform: translate(0, 0);
+            }
+
+            to {
+                transform: translate(-40px, -30px);
+            }
+
+        }
+
+        @keyframes scrollLinea {
+
+            0% {
+                opacity: 0;
+
+                transform: scaleY(0);
+            }
+
+            50% {
+                opacity: 1;
+
+                transform: scaleY(1);
+            }
+
+            100% {
+                opacity: 0;
+
+                transform: translateY(10px) scaleY(0.5);
             }
 
         }
@@ -622,9 +1002,9 @@
             }
 
             .hero {
-                min-height: 75vh;
+                min-height: 82vh;
 
-                padding: 70px 20px;
+                padding: 70px 20px 90px;
             }
 
             .hero h1 {
@@ -639,8 +1019,18 @@
                 font-size: 15px;
             }
 
+            .botones {
+                gap: 10px;
+            }
+
+            .boton {
+                padding: 12px 17px;
+
+                font-size: 13px;
+            }
+
             .introduccion {
-                padding: 65px 20px;
+                padding: 80px 20px;
             }
 
             .introduccion h2,
@@ -649,18 +1039,26 @@
             }
 
             .servicios {
-                padding: 60px 20px 80px;
+                padding: 60px 20px 90px;
             }
 
             .tarjetas {
                 grid-template-columns: 1fr;
             }
 
+            .separador {
+                width: 80%;
+
+                margin-bottom: 80px;
+            }
+
             .cta {
                 margin-left: 20px;
                 margin-right: 20px;
 
-                padding: 55px 22px;
+                padding: 60px 22px;
+
+                margin-bottom: 90px;
             }
 
             .cta h2 {
@@ -690,10 +1088,17 @@
 
 
     <!-- =========================
+         BARRA DE PROGRESO
+    ========================= -->
+
+    <div class="barra-progreso"></div>
+
+
+    <!-- =========================
          HEADER
     ========================= -->
 
-    <header>
+    <header id="header">
 
         <a href="index.html" class="logo">
             XONTREX
@@ -778,6 +1183,17 @@
 
         </div>
 
+
+        <div class="scroll-indicador">
+
+            <span>
+                DESCUBRIR
+            </span>
+
+            <div class="scroll-linea"></div>
+
+        </div>
+
     </section>
 
 
@@ -785,7 +1201,7 @@
          INTRODUCCIÓN
     ========================= -->
 
-    <section class="introduccion">
+    <section class="introduccion reveal">
 
         <div class="pequeno-titulo">
             XONTREX
@@ -813,7 +1229,7 @@
 
     <section class="servicios">
 
-        <div class="titulo-seccion">
+        <div class="titulo-seccion reveal">
 
             <span>
                 LO QUE HACEMOS
@@ -829,7 +1245,7 @@
         <div class="tarjetas">
 
 
-            <div class="tarjeta">
+            <div class="tarjeta reveal-left">
 
                 <div class="icono">
                     ✦
@@ -850,7 +1266,7 @@
             </div>
 
 
-            <div class="tarjeta">
+            <div class="tarjeta reveal">
 
                 <div class="icono">
                     ◇
@@ -871,7 +1287,7 @@
             </div>
 
 
-            <div class="tarjeta">
+            <div class="tarjeta reveal-right">
 
                 <div class="icono">
                     ↗
@@ -895,7 +1311,7 @@
         </div>
 
 
-        <div class="ver-servicios">
+        <div class="ver-servicios reveal">
 
             <a href="servicios/" class="boton boton-secundario">
                 Conocer todos los servicios →
@@ -907,10 +1323,17 @@
 
 
     <!-- =========================
+         SEPARADOR
+    ========================= -->
+
+    <div class="separador reveal"></div>
+
+
+    <!-- =========================
          CTA
     ========================= -->
 
-    <section class="cta">
+    <section class="cta reveal">
 
         <h2>
             Tu idea merece una presencia digital a su altura.
@@ -975,6 +1398,133 @@
     </footer>
 
 
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+
+    <script>
+
+        /* =========================
+           HEADER AL HACER SCROLL
+        ========================= */
+
+        const header = document.getElementById("header");
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 40) {
+
+                header.classList.add("scrolled");
+
+            } else {
+
+                header.classList.remove("scrolled");
+
+            }
+
+        });
+
+
+        /* =========================
+           BARRA DE PROGRESO
+        ========================= */
+
+        const barra = document.querySelector(".barra-progreso");
+
+        window.addEventListener("scroll", () => {
+
+            const scrollTop = window.scrollY;
+
+            const alturaPagina =
+                document.documentElement.scrollHeight -
+                document.documentElement.clientHeight;
+
+            const progreso =
+                (scrollTop / alturaPagina) * 100;
+
+            barra.style.width = progreso + "%";
+
+        });
+
+
+        /* =========================
+           ANIMACIONES AL HACER SCROLL
+        ========================= */
+
+        const elementosReveal =
+            document.querySelectorAll(
+                ".reveal, .reveal-left, .reveal-right"
+            );
+
+
+        const observer = new IntersectionObserver(
+
+            (entries) => {
+
+                entries.forEach((entry) => {
+
+                    if (entry.isIntersecting) {
+
+                        entry.target.classList.add("active");
+
+                        observer.unobserve(entry.target);
+
+                    }
+
+                });
+
+            },
+
+            {
+                threshold: 0.15
+            }
+
+        );
+
+
+        elementosReveal.forEach((elemento) => {
+
+            observer.observe(elemento);
+
+        });
+
+
+        /* =========================
+           SERVICE WORKER
+           Se activará cuando exista
+           el archivo service-worker.js
+        ========================= */
+
+        if ("serviceWorker" in navigator) {
+
+            window.addEventListener("load", () => {
+
+                navigator.serviceWorker
+                    .register("/service-worker.js")
+                    .then(() => {
+
+                        console.log(
+                            "Xontrex: Service Worker registrado."
+                        );
+
+                    })
+                    .catch((error) => {
+
+                        console.log(
+                            "Xontrex: Service Worker todavía no está disponible.",
+                            error
+                        );
+
+                    });
+
+            });
+
+        }
+
+    </script>
+
+
 </body>
 
 </html>
+```
