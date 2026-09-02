@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Restaurante Demo | Xontrex</title>
+
+    <meta name="description" content="Menú digital de Restaurante Demo.">
+    <meta name="robots" content="noindex, nofollow">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f1ea;
+            color: #1e1e1e;
+        }
+
+        /* =========================
+           PORTADA
+        ========================= */
+
+        .hero {
+            min-height: 75vh;
+            padding: 40px 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(20,20,20,0.60),
+                    rgba(20,20,20,0.75)
+                ),
+                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .logo-restaurante {
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 25px;
+
+            background: white;
+            color: #222;
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 38px;
+            font-weight: 800;
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 8vw, 75px);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #efefef;
+
+            margin-bottom: 30px;
+        }
+
+        .botones-hero {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .boton {
+            display: inline-block;
+
+            padding: 14px 22px;
+
+            border-radius: 30px;
+
+            text-decoration: none;
+            font-weight: 700;
+
+            transition: 0.3s;
+        }
+
+        .boton-principal {
+            background: white;
+            color: #1e1e1e;
+        }
+
+        .boton-secundario {
+            border: 1px solid rgba(255,255,255,0.7);
+            color: white;
+        }
+
+        .boton:hover {
+            transform: translateY(-3px);
+        }
+
+        /* =========================
+           INFORMACIÓN
+        ========================= */
+
+        .info {
+            max-width: 1000px;
+
+            margin: -45px auto 0;
+
+            padding: 0 20px;
+
+            position: relative;
+            z-index: 10;
+        }
+
+        .info-card {
+            background: white;
+
+            border-radius: 24px;
+
+            padding: 30px;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 20px;
+
+            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
+        }
+
+        .info-item {
+            text-align: center;
+        }
+
+        .info-item span {
+            display: block;
+
+            font-size: 12px;
+            text-transform: uppercase;
+
+            color: #888;
+
+            margin-bottom: 8px;
+
+            letter-spacing: 1px;
+        }
+
+        .info-item strong {
+            font-size: 16px;
+        }
+
+        /* =========================
+           MENÚ
+        ========================= */
+
+        .menu {
+            max-width: 1100px;
+            margin: auto;
+
+            padding: 100px 20px;
+        }
+
+        .titulo-seccion {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .titulo-seccion span {
+            font-size: 13px;
+            letter-spacing: 2px;
+            color: #9a784d;
+        }
+
+        .titulo-seccion h2 {
+            font-size: 42px;
+            margin-top: 10px;
+        }
+
+        .categoria {
+            margin-bottom: 65px;
+        }
+
+        .categoria h3 {
+            font-size: 30px;
+            margin-bottom: 25px;
+
+            padding-bottom: 12px;
+
+            border-bottom: 2px solid #d9c7ad;
+        }
+
+        .productos {
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(280px, 1fr));
+
+            gap: 20px;
+        }
+
+        .producto {
+            background: white;
+
+            border-radius: 18px;
+
+            padding: 22px;
+
+            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+
+            transition: 0.3s;
+        }
+
+        .producto:hover {
+            transform: translateY(-4px);
+        }
+
+        .producto-header {
+            display: flex;
+
+            align-items: flex-start;
+            justify-content: space-between;
+
+            gap: 15px;
+
+            margin-bottom: 10px;
+        }
+
+        .producto h4 {
+            font-size: 19px;
+        }
+
+        .precio {
+            font-size: 18px;
+            font-weight: 800;
+
+            color: #9a6331;
+
+            white-space: nowrap;
+        }
+
+        .producto p {
+            font-size: 14px;
+            line-height: 1.6;
+            color: #6d6d6d;
+        }
+
+        /* =========================
+           CONTACTO
+        ========================= */
+
+        .contacto {
+            background: #222;
+
+            color: white;
+
+            padding: 80px 20px;
+
+            text-align: center;
+        }
+
+        .contacto-contenido {
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contacto h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .contacto p {
+            color: #c9c9c9;
+
+            line-height: 1.7;
+
+            margin-bottom: 30px;
+        }
+
+        .contacto-botones {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+
+            gap: 12px;
+        }
+
+        .contacto .boton-principal {
+            background: white;
+            color: #222;
+        }
+
+        .contacto .boton-secundario {
+            color: white;
+        }
+
+        /* =========================
+           XONTREX
+        ========================= */
+
+        .xontrex {
+            background: #071a3d;
+
+            color: white;
+
+            padding: 25px 20px;
+
+            text-align: center;
+
+            font-size: 13px;
+        }
+
+        .xontrex a {
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 700px) {
+
+            .hero {
+                min-height: 70vh;
+            }
+
+            .info-card {
+                grid-template-columns: 1fr;
+            }
+
+            .info-item {
+                padding: 10px;
+            }
+
+            .menu {
+                padding-top: 80px;
+            }
+
+            .titulo-seccion h2 {
+                font-size: 34px;
+            }
+
+            .contacto h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="logo-restaurante">
+            RD
+        </div>
+
+        <h1>
+            Restaurante Demo
+        </h1>
+
+        <p>
+            Sabores especiales, ingredientes frescos
+            y una experiencia pensada para disfrutar.
+        </p>
+
+        <div class="botones-hero">
+
+            <a href="#menu" class="boton boton-principal">
+                Ver menú
+            </a>
+
+            <a href="https://wa.me/18090000000" class="boton boton-secundario">
+                Pedir por WhatsApp
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     INFORMACIÓN
+========================= -->
+
+<section class="info">
+
+    <div class="info-card">
+
+        <div class="info-item">
+            <span>Horario</span>
+            <strong>11:00 AM - 10:00 PM</strong>
+        </div>
+
+        <div class="info-item">
+            <span>Ubicación</span>
+            <strong>Santo Domingo, RD</strong>
+        </div>
+
+        <div class="info-item">
+            <span>Servicio</span>
+            <strong>Comer aquí · Para llevar</strong>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MENÚ
+========================= -->
+
+<section class="menu" id="menu">
+
+    <div class="titulo-seccion">
+
+        <span>NUESTRO MENÚ</span>
+
+        <h2>
+            Elige tu favorito
+        </h2>
+
+    </div>
+
+
+    <!-- ENTRADAS -->
+
+    <div class="categoria">
+
+        <h3>Entradas</h3>
+
+        <div class="productos">
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Croquetas de pollo
+                    </h4>
+
+                    <span class="precio">
+                        RD$250
+                    </span>
+
+                </div>
+
+                <p>
+                    Croquetas crujientes acompañadas
+                    de una salsa especial de la casa.
+                </p>
+
+            </div>
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Tostones especiales
+                    </h4>
+
+                    <span class="precio">
+                        RD$220
+                    </span>
+
+                </div>
+
+                <p>
+                    Tostones crujientes acompañados
+                    con salsa de ajo.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PLATOS PRINCIPALES -->
+
+    <div class="categoria">
+
+        <h3>Platos principales</h3>
+
+        <div class="productos">
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Churrasco a la parrilla
+                    </h4>
+
+                    <span class="precio">
+                        RD$850
+                    </span>
+
+                </div>
+
+                <p>
+                    Churrasco preparado a la parrilla,
+                    acompañado de papas y vegetales.
+                </p>
+
+            </div>
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Pollo en salsa
+                    </h4>
+
+                    <span class="precio">
+                        RD$520
+                    </span>
+
+                </div>
+
+                <p>
+                    Pechuga de pollo acompañada
+                    de nuestra salsa cremosa especial.
+                </p>
+
+            </div>
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Pasta de camarones
+                    </h4>
+
+                    <span class="precio">
+                        RD$650
+                    </span>
+
+                </div>
+
+                <p>
+                    Pasta cremosa preparada
+                    con camarones y especias.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- BEBIDAS -->
+
+    <div class="categoria">
+
+        <h3>Bebidas</h3>
+
+        <div class="productos">
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Limonada natural
+                    </h4>
+
+                    <span class="precio">
+                        RD$150
+                    </span>
+
+                </div>
+
+                <p>
+                    Limonada fresca preparada al momento.
+                </p>
+
+            </div>
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Jugo natural
+                    </h4>
+
+                    <span class="precio">
+                        RD$175
+                    </span>
+
+                </div>
+
+                <p>
+                    Consulta las frutas disponibles del día.
+                </p>
+
+            </div>
+
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Refresco
+                    </h4>
+
+                    <span class="precio">
+                        RD$100
+                    </span>
+
+                </div>
+
+                <p>
+                    Diferentes opciones disponibles.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- POSTRES -->
+
+    <div class="categoria">
+
+        <h3>Postres</h3>
+
+        <div class="productos">
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Cheesecake
+                    </h4>
+
+                    <span class="precio">
+                        RD$275
+                    </span>
+
+                </div>
+
+                <p>
+                    Cheesecake cremoso con topping
+                    especial de la casa.
+                </p>
+
+            </div>
+
+            <div class="producto">
+
+                <div class="producto-header">
+
+                    <h4>
+                        Brownie con helado
+                    </h4>
+
+                    <span class="precio">
+                        RD$300
+                    </span>
+
+                </div>
+
+                <p>
+                    Brownie de chocolate acompañado
+                    de helado de vainilla.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACTO
+========================= -->
+
+<section class="contacto">
+
+    <div class="contacto-contenido">
+
+        <h2>
+            ¿Listo para ordenar?
+        </h2>
+
+        <p>
+            Escríbenos directamente por WhatsApp
+            o visita nuestras redes sociales.
+        </p>
+
+        <div class="contacto-botones">
+
+            <a
+                href="https://wa.me/18090000000"
+                class="boton boton-principal"
+            >
+                WhatsApp
+            </a>
+
+            <a
+                href="https://instagram.com/"
+                class="boton boton-secundario"
+            >
+                Instagram
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     XONTREX
+========================= -->
+
+<footer class="xontrex">
+
+    Espacio digital desarrollado por
+    <a href="https://xontrex.github.io/">
+        Xontrex
+    </a>
+
+</footer>
+
+</body>
+</html>
