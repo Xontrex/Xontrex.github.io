@@ -26,6 +26,7 @@
             color: #1e1e1e;
         }
 
+
         /* =========================
            PORTADA
         ========================= */
@@ -123,13 +124,13 @@
             transform: translateY(-3px);
         }
 
+
         /* =========================
            INFORMACIÓN
         ========================= */
 
         .info {
             max-width: 1000px;
-
             margin: -45px auto 0;
 
             padding: 0 20px;
@@ -175,6 +176,79 @@
             font-size: 16px;
         }
 
+
+        /* =========================
+           CATEGORÍAS RÁPIDAS
+        ========================= */
+
+        .categorias-nav {
+            position: sticky;
+            top: 0;
+            z-index: 500;
+
+            margin-top: 70px;
+
+            background: rgba(244, 241, 234, 0.96);
+            backdrop-filter: blur(12px);
+
+            border-top: 1px solid rgba(0,0,0,0.04);
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+
+            padding: 14px 15px;
+
+            overflow-x: auto;
+            white-space: nowrap;
+
+            scrollbar-width: none;
+        }
+
+        .categorias-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .categorias-contenido {
+            max-width: 1000px;
+            margin: auto;
+
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+
+            min-width: max-content;
+        }
+
+        .categoria-boton {
+            display: inline-block;
+
+            padding: 11px 18px;
+
+            background: white;
+            color: #333;
+
+            border: 1px solid #ded8cf;
+            border-radius: 25px;
+
+            text-decoration: none;
+
+            font-size: 14px;
+            font-weight: 700;
+
+            transition: 0.25s;
+        }
+
+        .categoria-boton:hover {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+
+        .categoria-boton.activo {
+            background: #222;
+            color: white;
+            border-color: #222;
+        }
+
+
         /* =========================
            MENÚ
         ========================= */
@@ -183,7 +257,7 @@
             max-width: 1100px;
             margin: auto;
 
-            padding: 100px 20px;
+            padding: 75px 20px 100px;
         }
 
         .titulo-seccion {
@@ -204,6 +278,7 @@
 
         .categoria {
             margin-bottom: 65px;
+            scroll-margin-top: 100px;
         }
 
         .categoria h3 {
@@ -270,6 +345,7 @@
             color: #6d6d6d;
         }
 
+
         /* =========================
            CONTACTO
         ========================= */
@@ -319,6 +395,7 @@
             color: white;
         }
 
+
         /* =========================
            XONTREX
         ========================= */
@@ -341,6 +418,7 @@
             font-weight: 700;
         }
 
+
         /* =========================
            MOBILE
         ========================= */
@@ -359,8 +437,16 @@
                 padding: 10px;
             }
 
+            .categorias-nav {
+                margin-top: 55px;
+            }
+
+            .categorias-contenido {
+                justify-content: flex-start;
+            }
+
             .menu {
-                padding-top: 80px;
+                padding-top: 60px;
             }
 
             .titulo-seccion h2 {
@@ -371,10 +457,13 @@
                 font-size: 32px;
             }
         }
+
     </style>
 </head>
 
+
 <body>
+
 
 <!-- =========================
      PORTADA
@@ -403,7 +492,11 @@
                 Ver menú
             </a>
 
-            <a href="https://wa.me/18090000000" class="boton boton-secundario">
+            <a
+                href="https://wa.me/18090000000"
+                class="boton boton-secundario"
+                target="_blank"
+            >
                 Pedir por WhatsApp
             </a>
 
@@ -412,6 +505,7 @@
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -423,23 +517,94 @@
     <div class="info-card">
 
         <div class="info-item">
-            <span>Horario</span>
-            <strong>11:00 AM - 10:00 PM</strong>
+
+            <span>
+                Horario
+            </span>
+
+            <strong>
+                11:00 AM - 10:00 PM
+            </strong>
+
         </div>
 
         <div class="info-item">
-            <span>Ubicación</span>
-            <strong>Santo Domingo, RD</strong>
+
+            <span>
+                Ubicación
+            </span>
+
+            <strong>
+                Santo Domingo, RD
+            </strong>
+
         </div>
 
         <div class="info-item">
-            <span>Servicio</span>
-            <strong>Comer aquí · Para llevar</strong>
+
+            <span>
+                Servicio
+            </span>
+
+            <strong>
+                Comer aquí · Para llevar
+            </strong>
+
         </div>
 
     </div>
 
 </section>
+
+
+
+<!-- =========================
+     CATEGORÍAS
+========================= -->
+
+<nav class="categorias-nav">
+
+    <div class="categorias-contenido">
+
+        <a
+            href="#menu"
+            class="categoria-boton activo"
+        >
+            Todo
+        </a>
+
+        <a
+            href="#entradas"
+            class="categoria-boton"
+        >
+            Entradas
+        </a>
+
+        <a
+            href="#principales"
+            class="categoria-boton"
+        >
+            Platos principales
+        </a>
+
+        <a
+            href="#bebidas"
+            class="categoria-boton"
+        >
+            Bebidas
+        </a>
+
+        <a
+            href="#postres"
+            class="categoria-boton"
+        >
+            Postres
+        </a>
+
+    </div>
+
+</nav>
+
 
 
 <!-- =========================
@@ -450,7 +615,9 @@
 
     <div class="titulo-seccion">
 
-        <span>NUESTRO MENÚ</span>
+        <span>
+            NUESTRO MENÚ
+        </span>
 
         <h2>
             Elige tu favorito
@@ -459,13 +626,22 @@
     </div>
 
 
-    <!-- ENTRADAS -->
 
-    <div class="categoria">
+    <!-- =========================
+         ENTRADAS
+    ========================= -->
 
-        <h3>Entradas</h3>
+    <div
+        class="categoria"
+        id="entradas"
+    >
+
+        <h3>
+            Entradas
+        </h3>
 
         <div class="productos">
+
 
             <div class="producto">
 
@@ -489,6 +665,7 @@
             </div>
 
 
+
             <div class="producto">
 
                 <div class="producto-header">
@@ -510,16 +687,25 @@
 
             </div>
 
+
         </div>
 
     </div>
 
 
-    <!-- PLATOS PRINCIPALES -->
 
-    <div class="categoria">
+    <!-- =========================
+         PLATOS PRINCIPALES
+    ========================= -->
 
-        <h3>Platos principales</h3>
+    <div
+        class="categoria"
+        id="principales"
+    >
+
+        <h3>
+            Platos principales
+        </h3>
 
         <div class="productos">
 
@@ -546,6 +732,7 @@
             </div>
 
 
+
             <div class="producto">
 
                 <div class="producto-header">
@@ -566,6 +753,7 @@
                 </p>
 
             </div>
+
 
 
             <div class="producto">
@@ -595,11 +783,19 @@
     </div>
 
 
-    <!-- BEBIDAS -->
 
-    <div class="categoria">
+    <!-- =========================
+         BEBIDAS
+    ========================= -->
 
-        <h3>Bebidas</h3>
+    <div
+        class="categoria"
+        id="bebidas"
+    >
+
+        <h3>
+            Bebidas
+        </h3>
 
         <div class="productos">
 
@@ -625,6 +821,7 @@
             </div>
 
 
+
             <div class="producto">
 
                 <div class="producto-header">
@@ -644,6 +841,7 @@
                 </p>
 
             </div>
+
 
 
             <div class="producto">
@@ -666,18 +864,28 @@
 
             </div>
 
+
         </div>
 
     </div>
 
 
-    <!-- POSTRES -->
 
-    <div class="categoria">
+    <!-- =========================
+         POSTRES
+    ========================= -->
 
-        <h3>Postres</h3>
+    <div
+        class="categoria"
+        id="postres"
+    >
+
+        <h3>
+            Postres
+        </h3>
 
         <div class="productos">
+
 
             <div class="producto">
 
@@ -700,6 +908,8 @@
 
             </div>
 
+
+
             <div class="producto">
 
                 <div class="producto-header">
@@ -721,11 +931,13 @@
 
             </div>
 
+
         </div>
 
     </div>
 
 </section>
+
 
 
 <!-- =========================
@@ -750,6 +962,7 @@
             <a
                 href="https://wa.me/18090000000"
                 class="boton boton-principal"
+                target="_blank"
             >
                 WhatsApp
             </a>
@@ -757,6 +970,7 @@
             <a
                 href="https://instagram.com/"
                 class="boton boton-secundario"
+                target="_blank"
             >
                 Instagram
             </a>
@@ -768,6 +982,7 @@
 </section>
 
 
+
 <!-- =========================
      XONTREX
 ========================= -->
@@ -775,11 +990,13 @@
 <footer class="xontrex">
 
     Espacio digital desarrollado por
+
     <a href="https://xontrex.github.io/">
         Xontrex
     </a>
 
 </footer>
+
 
 </body>
 </html>
