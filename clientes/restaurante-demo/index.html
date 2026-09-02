@@ -2,460 +2,1440 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Restaurante Demo | Xontrex</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <meta name="description" content="Menú digital de Restaurante Demo.">
-    <meta name="robots" content="noindex, nofollow">
+    <title>Restaurante Demo | Menú Digital</title>
+
+    <meta
+        name="description"
+        content="Menú digital de Restaurante Demo desarrollado por Xontrex."
+    >
+
+    <meta
+        name="robots"
+        content="noindex, nofollow"
+    >
 
     <style>
+
+        /* =========================================
+           CONFIGURACIÓN GENERAL
+        ========================================= */
+
+        :root {
+            --fondo: #f5f1ea;
+            --fondo-secundario: #ffffff;
+            --texto: #1e1e1e;
+            --texto-suave: #717171;
+
+            --principal: #1e1e1e;
+            --acento: #a66a36;
+            --acento-suave: #e4d5c5;
+
+            --verde: #1f8f55;
+
+            --radio-grande: 26px;
+            --radio-medio: 18px;
+
+            --sombra:
+                0 12px 35px
+                rgba(0, 0, 0, 0.08);
+
+            --max-width: 1180px;
+        }
+
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+
         html {
             scroll-behavior: smooth;
         }
 
+
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #f4f1ea;
-            color: #1e1e1e;
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background: var(--fondo);
+            color: var(--texto);
+
+            overflow-x: hidden;
         }
 
 
-        /* =========================
+        img {
+            width: 100%;
+            display: block;
+        }
+
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+
+
+        /* =========================================
            PORTADA
-        ========================= */
+        ========================================= */
 
         .hero {
-            min-height: 75vh;
-            padding: 40px 20px;
+
+            min-height: 82vh;
+
+            position: relative;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
+            padding: 50px 20px;
+
             text-align: center;
 
+            color: white;
+
             background:
+
                 linear-gradient(
-                    rgba(20,20,20,0.60),
-                    rgba(20,20,20,0.75)
+                    rgba(10, 10, 10, 0.48),
+                    rgba(10, 10, 10, 0.78)
                 ),
-                url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80");
+
+                url(
+                    "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1800&q=85"
+                );
 
             background-size: cover;
             background-position: center;
-
-            color: white;
         }
+
+
+        .hero::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: 120px;
+
+            background:
+                linear-gradient(
+                    transparent,
+                    rgba(0,0,0,0.20)
+                );
+
+            pointer-events: none;
+        }
+
 
         .hero-content {
-            max-width: 700px;
+
+            max-width: 760px;
+
+            position: relative;
+
+            z-index: 2;
         }
 
+
         .logo-restaurante {
-            width: 100px;
-            height: 100px;
 
-            margin: 0 auto 25px;
+            width: 110px;
+            height: 110px;
 
-            background: white;
-            color: #222;
+            margin:
+                0 auto
+                28px;
 
             border-radius: 50%;
+
+            background: white;
 
             display: flex;
             align-items: center;
             justify-content: center;
 
+            color: var(--principal);
+
             font-size: 38px;
-            font-weight: 800;
+            font-weight: 900;
+
+            box-shadow:
+                0 15px 40px
+                rgba(0,0,0,0.25);
         }
 
-        .hero h1 {
-            font-size: clamp(42px, 8vw, 75px);
-            margin-bottom: 15px;
-        }
 
-        .hero p {
-            font-size: 18px;
-            line-height: 1.7;
-            color: #efefef;
+        .hero-etiqueta {
 
-            margin-bottom: 30px;
-        }
-
-        .botones-hero {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-
-        .boton {
             display: inline-block;
 
-            padding: 14px 22px;
+            padding:
+                8px
+                15px;
 
-            border-radius: 30px;
+            margin-bottom: 18px;
 
-            text-decoration: none;
-            font-weight: 700;
+            border:
+                1px solid
+                rgba(255,255,255,0.35);
 
-            transition: 0.3s;
-        }
+            border-radius: 50px;
 
-        .boton-principal {
-            background: white;
-            color: #1e1e1e;
-        }
+            background:
+                rgba(255,255,255,0.12);
 
-        .boton-secundario {
-            border: 1px solid rgba(255,255,255,0.7);
-            color: white;
-        }
-
-        .boton:hover {
-            transform: translateY(-3px);
-        }
-
-
-        /* =========================
-           INFORMACIÓN
-        ========================= */
-
-        .info {
-            max-width: 1000px;
-            margin: -45px auto 0;
-
-            padding: 0 20px;
-
-            position: relative;
-            z-index: 10;
-        }
-
-        .info-card {
-            background: white;
-
-            border-radius: 24px;
-
-            padding: 30px;
-
-            display: grid;
-
-            grid-template-columns: repeat(3, 1fr);
-
-            gap: 20px;
-
-            box-shadow: 0 15px 45px rgba(0,0,0,0.12);
-        }
-
-        .info-item {
-            text-align: center;
-        }
-
-        .info-item span {
-            display: block;
+            backdrop-filter: blur(10px);
 
             font-size: 12px;
-            text-transform: uppercase;
 
-            color: #888;
+            letter-spacing: 1.5px;
 
-            margin-bottom: 8px;
-
-            letter-spacing: 1px;
-        }
-
-        .info-item strong {
-            font-size: 16px;
+            font-weight: 700;
         }
 
 
-        /* =========================
-           CATEGORÍAS RÁPIDAS
-        ========================= */
+        .hero h1 {
 
-        .categorias-nav {
-            position: sticky;
-            top: 0;
-            z-index: 500;
+            font-size:
+                clamp(
+                    44px,
+                    8vw,
+                    78px
+                );
 
-            margin-top: 70px;
+            line-height: 1;
 
-            background: rgba(244, 241, 234, 0.96);
-            backdrop-filter: blur(12px);
-
-            border-top: 1px solid rgba(0,0,0,0.04);
-            border-bottom: 1px solid rgba(0,0,0,0.08);
-
-            padding: 14px 15px;
-
-            overflow-x: auto;
-            white-space: nowrap;
-
-            scrollbar-width: none;
+            margin-bottom: 18px;
         }
 
-        .categorias-nav::-webkit-scrollbar {
-            display: none;
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin:
+                0 auto
+                30px;
+
+            font-size: 18px;
+
+            line-height: 1.7;
+
+            color: #eeeeee;
         }
 
-        .categorias-contenido {
-            max-width: 1000px;
-            margin: auto;
+
+        .hero-botones {
 
             display: flex;
-            justify-content: center;
-            gap: 10px;
 
-            min-width: max-content;
+            justify-content: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
         }
 
-        .categoria-boton {
-            display: inline-block;
 
-            padding: 11px 18px;
+        .boton {
 
-            background: white;
-            color: #333;
+            display: inline-flex;
 
-            border: 1px solid #ded8cf;
-            border-radius: 25px;
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+
+            padding:
+                14px
+                22px;
+
+            border-radius: 50px;
 
             text-decoration: none;
 
             font-size: 14px;
-            font-weight: 700;
 
-            transition: 0.25s;
+            font-weight: 800;
+
+            transition:
+                transform .25s ease,
+                opacity .25s ease;
         }
 
-        .categoria-boton:hover {
-            background: #222;
+
+        .boton:hover {
+
+            transform:
+                translateY(-3px);
+        }
+
+
+        .boton-claro {
+
+            background: white;
+
+            color: #1e1e1e;
+        }
+
+
+        .boton-transparente {
+
             color: white;
-            border-color: #222;
+
+            border:
+                1px solid
+                rgba(255,255,255,0.7);
+
+            background:
+                rgba(255,255,255,0.08);
+
+            backdrop-filter: blur(10px);
         }
 
-        .categoria-boton.activo {
-            background: #222;
-            color: white;
-            border-color: #222;
+
+
+        /* =========================================
+           INFORMACIÓN DEL RESTAURANTE
+        ========================================= */
+
+        .info-wrapper {
+
+            max-width: var(--max-width);
+
+            margin:
+                -55px
+                auto
+                0;
+
+            padding:
+                0
+                20px;
+
+            position: relative;
+
+            z-index: 20;
         }
 
 
-        /* =========================
-           MENÚ
-        ========================= */
+        .info-card {
 
-        .menu {
-            max-width: 1100px;
-            margin: auto;
+            background: white;
 
-            padding: 75px 20px 100px;
-        }
+            border-radius:
+                var(--radio-grande);
 
-        .titulo-seccion {
-            text-align: center;
-            margin-bottom: 55px;
-        }
+            padding:
+                30px;
 
-        .titulo-seccion span {
-            font-size: 13px;
-            letter-spacing: 2px;
-            color: #9a784d;
-        }
-
-        .titulo-seccion h2 {
-            font-size: 42px;
-            margin-top: 10px;
-        }
-
-        .categoria {
-            margin-bottom: 65px;
-            scroll-margin-top: 100px;
-        }
-
-        .categoria h3 {
-            font-size: 30px;
-            margin-bottom: 25px;
-
-            padding-bottom: 12px;
-
-            border-bottom: 2px solid #d9c7ad;
-        }
-
-        .productos {
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(280px, 1fr));
-
-            gap: 20px;
-        }
-
-        .producto {
-            background: white;
-
-            border-radius: 18px;
-
-            padding: 22px;
-
-            box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-
-            transition: 0.3s;
-        }
-
-        .producto:hover {
-            transform: translateY(-4px);
-        }
-
-        .producto-header {
-            display: flex;
-
-            align-items: flex-start;
-            justify-content: space-between;
+                repeat(
+                    4,
+                    1fr
+                );
 
             gap: 15px;
+
+            box-shadow:
+                var(--sombra);
+        }
+
+
+        .info-item {
+
+            text-align: center;
+
+            padding:
+                10px;
+        }
+
+
+        .info-icono {
+
+            font-size: 22px;
 
             margin-bottom: 10px;
         }
 
-        .producto h4 {
-            font-size: 19px;
-        }
 
-        .precio {
-            font-size: 18px;
+        .info-item span {
+
+            display: block;
+
+            margin-bottom: 7px;
+
+            color:
+                #999;
+
+            font-size: 11px;
+
             font-weight: 800;
 
-            color: #9a6331;
+            text-transform: uppercase;
+
+            letter-spacing: 1.1px;
+        }
+
+
+        .info-item strong {
+
+            font-size: 15px;
+
+            line-height: 1.4;
+        }
+
+
+
+        /* =========================================
+           PRESENTACIÓN
+        ========================================= */
+
+        .presentacion {
+
+            max-width:
+                850px;
+
+            margin:
+                auto;
+
+            padding:
+                90px
+                20px
+                60px;
+
+            text-align: center;
+        }
+
+
+        .mini-titulo {
+
+            display: inline-block;
+
+            margin-bottom: 15px;
+
+            color:
+                var(--acento);
+
+            font-size: 12px;
+
+            font-weight: 900;
+
+            letter-spacing: 2px;
+        }
+
+
+        .presentacion h2 {
+
+            font-size:
+                clamp(
+                    32px,
+                    5vw,
+                    48px
+                );
+
+            margin-bottom: 18px;
+        }
+
+
+        .presentacion p {
+
+            color:
+                var(--texto-suave);
+
+            font-size: 16px;
+
+            line-height: 1.8;
+        }
+
+
+
+        /* =========================================
+           NAVEGACIÓN DE CATEGORÍAS
+        ========================================= */
+
+        .categorias-nav {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+
+            padding:
+                14px
+                15px;
+
+            overflow-x: auto;
 
             white-space: nowrap;
+
+            background:
+                rgba(
+                    245,
+                    241,
+                    234,
+                    0.96
+                );
+
+            backdrop-filter:
+                blur(14px);
+
+            border-top:
+                1px solid
+                rgba(0,0,0,0.05);
+
+            border-bottom:
+                1px solid
+                rgba(0,0,0,0.08);
+
+            scrollbar-width:
+                none;
         }
 
-        .producto p {
-            font-size: 14px;
-            line-height: 1.6;
-            color: #6d6d6d;
+
+        .categorias-nav::-webkit-scrollbar {
+
+            display: none;
         }
 
 
-        /* =========================
+        .categorias-contenido {
+
+            max-width:
+                var(--max-width);
+
+            margin: auto;
+
+            min-width:
+                max-content;
+
+            display: flex;
+
+            justify-content:
+                center;
+
+            gap: 9px;
+        }
+
+
+        .categoria-btn {
+
+            display:
+                inline-block;
+
+            padding:
+                11px
+                17px;
+
+            border-radius:
+                50px;
+
+            border:
+                1px solid
+                #ddd5cb;
+
+            background:
+                white;
+
+            color:
+                #3c3c3c;
+
+            text-decoration:
+                none;
+
+            font-size:
+                13px;
+
+            font-weight:
+                800;
+
+            transition:
+                .25s;
+        }
+
+
+        .categoria-btn:hover,
+        .categoria-btn.activo {
+
+            background:
+                var(--principal);
+
+            color:
+                white;
+
+            border-color:
+                var(--principal);
+        }
+
+
+
+        /* =========================================
+           MENÚ
+        ========================================= */
+
+        .menu {
+
+            max-width:
+                var(--max-width);
+
+            margin:
+                auto;
+
+            padding:
+                75px
+                20px
+                110px;
+        }
+
+
+        .menu-titulo {
+
+            text-align:
+                center;
+
+            margin-bottom:
+                65px;
+        }
+
+
+        .menu-titulo h2 {
+
+            font-size:
+                clamp(
+                    36px,
+                    5vw,
+                    52px
+                );
+
+            margin-top:
+                10px;
+        }
+
+
+        .categoria {
+
+            margin-bottom:
+                85px;
+
+            scroll-margin-top:
+                100px;
+        }
+
+
+        .categoria-header {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-end;
+
+            gap:
+                20px;
+
+            padding-bottom:
+                14px;
+
+            margin-bottom:
+                28px;
+
+            border-bottom:
+                2px solid
+                var(--acento-suave);
+        }
+
+
+        .categoria-header h3 {
+
+            font-size:
+                30px;
+        }
+
+
+        .categoria-header p {
+
+            color:
+                var(--texto-suave);
+
+            font-size:
+                13px;
+        }
+
+
+
+        /* =========================================
+           PRODUCTOS
+        ========================================= */
+
+        .productos {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    1fr
+                );
+
+            gap: 24px;
+        }
+
+
+        .producto {
+
+            position: relative;
+
+            display: grid;
+
+            grid-template-columns:
+                145px
+                1fr;
+
+            overflow: hidden;
+
+            background: white;
+
+            border-radius:
+                var(--radio-medio);
+
+            box-shadow:
+                0 8px 25px
+                rgba(0,0,0,0.055);
+
+            transition:
+                transform .28s ease,
+                box-shadow .28s ease;
+        }
+
+
+        .producto:hover {
+
+            transform:
+                translateY(-5px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0,0,0,0.09);
+        }
+
+
+        .producto-imagen {
+
+            width: 145px;
+
+            height: 100%;
+
+            min-height: 165px;
+
+            object-fit: cover;
+        }
+
+
+        .producto-contenido {
+
+            padding:
+                20px;
+
+            display: flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+        }
+
+
+        .producto-superior {
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items:
+                flex-start;
+
+            gap:
+                15px;
+
+            margin-bottom:
+                10px;
+        }
+
+
+        .producto h4 {
+
+            font-size:
+                18px;
+
+            line-height:
+                1.3;
+        }
+
+
+        .precio {
+
+            color:
+                var(--acento);
+
+            font-size:
+                17px;
+
+            font-weight:
+                900;
+
+            white-space:
+                nowrap;
+        }
+
+
+        .producto-descripcion {
+
+            color:
+                var(--texto-suave);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+        }
+
+
+        .etiqueta-producto {
+
+            display:
+                inline-block;
+
+            width:
+                fit-content;
+
+            margin-bottom:
+                9px;
+
+            padding:
+                5px
+                9px;
+
+            border-radius:
+                50px;
+
+            background:
+                #f2e4d6;
+
+            color:
+                #805229;
+
+            font-size:
+                10px;
+
+            font-weight:
+                900;
+
+            text-transform:
+                uppercase;
+
+            letter-spacing:
+                .7px;
+        }
+
+
+
+        /* =========================================
+           AVISO
+        ========================================= */
+
+        .aviso {
+
+            max-width:
+                var(--max-width);
+
+            margin:
+                -45px
+                auto
+                90px;
+
+            padding:
+                0
+                20px;
+        }
+
+
+        .aviso-card {
+
+            padding:
+                25px;
+
+            border-radius:
+                var(--radio-medio);
+
+            background:
+                #ece5dc;
+
+            color:
+                #665b50;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.7;
+
+            text-align:
+                center;
+        }
+
+
+
+        /* =========================================
            CONTACTO
-        ========================= */
+        ========================================= */
 
         .contacto {
-            background: #222;
 
-            color: white;
+            background:
+                #1e1e1e;
 
-            padding: 80px 20px;
+            color:
+                white;
 
-            text-align: center;
+            padding:
+                100px
+                20px;
         }
+
 
         .contacto-contenido {
-            max-width: 700px;
-            margin: auto;
+
+            max-width:
+                760px;
+
+            margin:
+                auto;
+
+            text-align:
+                center;
         }
+
 
         .contacto h2 {
-            font-size: 40px;
-            margin-bottom: 15px;
+
+            font-size:
+                clamp(
+                    34px,
+                    5vw,
+                    52px
+                );
+
+            margin-bottom:
+                18px;
         }
+
 
         .contacto p {
-            color: #c9c9c9;
 
-            line-height: 1.7;
+            max-width:
+                620px;
 
-            margin-bottom: 30px;
+            margin:
+                0 auto
+                32px;
+
+            color:
+                #cfcfcf;
+
+            font-size:
+                16px;
+
+            line-height:
+                1.8;
         }
+
 
         .contacto-botones {
+
             display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
+
+            justify-content:
+                center;
 
             gap: 12px;
-        }
 
-        .contacto .boton-principal {
-            background: white;
-            color: #222;
-        }
-
-        .contacto .boton-secundario {
-            color: white;
+            flex-wrap:
+                wrap;
         }
 
 
-        /* =========================
-           XONTREX
-        ========================= */
 
-        .xontrex {
-            background: #071a3d;
+        /* =========================================
+           UBICACIÓN Y REDES
+        ========================================= */
 
-            color: white;
+        .datos {
 
-            padding: 25px 20px;
+            background:
+                #151515;
 
-            text-align: center;
+            color:
+                white;
 
-            font-size: 13px;
-        }
-
-        .xontrex a {
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
+            padding:
+                70px
+                20px;
         }
 
 
-        /* =========================
-           MOBILE
-        ========================= */
+        .datos-grid {
 
-        @media (max-width: 700px) {
+            max-width:
+                900px;
 
-            .hero {
-                min-height: 70vh;
-            }
+            margin:
+                auto;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                20px;
+        }
+
+
+        .dato {
+
+            padding:
+                25px;
+
+            border:
+                1px solid
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.10
+                );
+
+            border-radius:
+                18px;
+
+            text-align:
+                center;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.03
+                );
+        }
+
+
+        .dato h4 {
+
+            margin-bottom:
+                8px;
+
+            font-size:
+                15px;
+        }
+
+
+        .dato p,
+        .dato a {
+
+            color:
+                #aaa;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+
+            text-decoration:
+                none;
+        }
+
+
+        .dato a:hover {
+
+            color:
+                white;
+        }
+
+
+
+        /* =========================================
+           WHATSAPP FLOTANTE
+        ========================================= */
+
+        .whatsapp-flotante {
+
+            position: fixed;
+
+            right:
+                20px;
+
+            bottom:
+                20px;
+
+            z-index:
+                2000;
+
+            width:
+                58px;
+
+            height:
+                58px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--verde);
+
+            color:
+                white;
+
+            display: flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-decoration:
+                none;
+
+            font-weight:
+                900;
+
+            font-size:
+                13px;
+
+            box-shadow:
+                0 10px 25px
+                rgba(0,0,0,0.25);
+
+            transition:
+                transform .25s;
+        }
+
+
+        .whatsapp-flotante:hover {
+
+            transform:
+                scale(1.08);
+        }
+
+
+
+        /* =========================================
+           FOOTER XONTREX
+        ========================================= */
+
+        footer {
+
+            padding:
+                28px
+                20px;
+
+            background:
+                #071a3d;
+
+            color:
+                #b9c4d5;
+
+            text-align:
+                center;
+
+            font-size:
+                12px;
+
+            line-height:
+                1.7;
+        }
+
+
+        footer strong {
+
+            color:
+                white;
+        }
+
+
+        footer a {
+
+            color:
+                white;
+
+            text-decoration:
+                none;
+        }
+
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media
+        (max-width: 900px) {
 
             .info-card {
-                grid-template-columns: 1fr;
+
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
             }
+
+
+            .productos {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .datos-grid {
+
+                grid-template-columns:
+                    1fr;
+            }
+
+        }
+
+
+
+        /* =========================================
+           CELULAR
+        ========================================= */
+
+        @media
+        (max-width: 600px) {
+
+            .hero {
+
+                min-height:
+                    76vh;
+
+                padding:
+                    40px
+                    18px;
+            }
+
+
+            .logo-restaurante {
+
+                width:
+                    90px;
+
+                height:
+                    90px;
+
+                font-size:
+                    30px;
+            }
+
+
+            .hero p {
+
+                font-size:
+                    16px;
+            }
+
+
+            .hero-botones {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+            }
+
+
+            .boton {
+
+                width:
+                    100%;
+            }
+
+
+            .info-wrapper {
+
+                margin-top:
+                    -35px;
+            }
+
+
+            .info-card {
+
+                grid-template-columns:
+                    1fr;
+
+                padding:
+                    18px;
+            }
+
 
             .info-item {
-                padding: 10px;
+
+                border-bottom:
+                    1px solid
+                    #eeeeee;
+
+                padding:
+                    16px
+                    10px;
             }
 
-            .categorias-nav {
-                margin-top: 55px;
+
+            .info-item:last-child {
+
+                border-bottom:
+                    none;
             }
+
+
+            .presentacion {
+
+                padding-top:
+                    75px;
+            }
+
 
             .categorias-contenido {
-                justify-content: flex-start;
+
+                justify-content:
+                    flex-start;
             }
+
 
             .menu {
-                padding-top: 60px;
+
+                padding-top:
+                    55px;
             }
 
-            .titulo-seccion h2 {
-                font-size: 34px;
+
+            .categoria {
+
+                margin-bottom:
+                    65px;
             }
 
-            .contacto h2 {
-                font-size: 32px;
+
+            .categoria-header {
+
+                display:
+                    block;
             }
+
+
+            .categoria-header p {
+
+                margin-top:
+                    7px;
+            }
+
+
+            .producto {
+
+                grid-template-columns:
+                    105px
+                    1fr;
+            }
+
+
+            .producto-imagen {
+
+                width:
+                    105px;
+
+                min-height:
+                    150px;
+            }
+
+
+            .producto-contenido {
+
+                padding:
+                    15px;
+            }
+
+
+            .producto-superior {
+
+                display:
+                    block;
+            }
+
+
+            .precio {
+
+                display:
+                    block;
+
+                margin-top:
+                    5px;
+            }
+
+
+            .producto-descripcion {
+
+                font-size:
+                    12px;
+            }
+
+
+            .whatsapp-flotante {
+
+                right:
+                    15px;
+
+                bottom:
+                    15px;
+
+                width:
+                    54px;
+
+                height:
+                    54px;
+            }
+
         }
 
     </style>
@@ -465,9 +1445,10 @@
 <body>
 
 
-<!-- =========================
+
+<!-- =========================================
      PORTADA
-========================= -->
+========================================= -->
 
 <section class="hero">
 
@@ -477,25 +1458,35 @@
             RD
         </div>
 
+        <span class="hero-etiqueta">
+            RESTAURANTE DEMO
+        </span>
+
         <h1>
             Restaurante Demo
         </h1>
 
         <p>
-            Sabores especiales, ingredientes frescos
-            y una experiencia pensada para disfrutar.
+            Cocina preparada con ingredientes frescos,
+            buen sabor y una experiencia pensada para
+            compartir.
         </p>
 
-        <div class="botones-hero">
+        <div class="hero-botones">
 
-            <a href="#menu" class="boton boton-principal">
+            <a
+                href="#menu"
+                class="boton boton-claro"
+            >
                 Ver menú
             </a>
 
+
             <a
                 href="https://wa.me/18090000000"
-                class="boton boton-secundario"
                 target="_blank"
+                rel="noopener"
+                class="boton boton-transparente"
             >
                 Pedir por WhatsApp
             </a>
@@ -508,49 +1499,85 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      INFORMACIÓN
-========================= -->
+========================================= -->
 
-<section class="info">
+<section class="info-wrapper">
 
     <div class="info-card">
 
+
         <div class="info-item">
+
+            <div class="info-icono">
+                🕐
+            </div>
 
             <span>
                 Horario
             </span>
 
             <strong>
-                11:00 AM - 10:00 PM
+                11:00 AM – 10:00 PM
             </strong>
 
         </div>
 
+
+
         <div class="info-item">
+
+            <div class="info-icono">
+                📍
+            </div>
 
             <span>
                 Ubicación
             </span>
 
             <strong>
-                Santo Domingo, RD
+                Santo Domingo
             </strong>
 
         </div>
 
+
+
         <div class="info-item">
+
+            <div class="info-icono">
+                🍽️
+            </div>
 
             <span>
                 Servicio
             </span>
 
             <strong>
-                Comer aquí · Para llevar
+                Comer aquí y para llevar
             </strong>
 
         </div>
+
+
+
+        <div class="info-item">
+
+            <div class="info-icono">
+                📱
+            </div>
+
+            <span>
+                Pedidos
+            </span>
+
+            <strong>
+                WhatsApp
+            </strong>
+
+        </div>
+
 
     </div>
 
@@ -558,48 +1585,78 @@
 
 
 
-<!-- =========================
+<!-- =========================================
+     PRESENTACIÓN
+========================================= -->
+
+<section class="presentacion">
+
+    <span class="mini-titulo">
+        NUESTRA COCINA
+    </span>
+
+    <h2>
+        Encuentra algo que te encante
+    </h2>
+
+    <p>
+        Explora nuestro menú digital, conoce nuestros
+        platos y consulta precios actualizados desde
+        cualquier dispositivo.
+    </p>
+
+</section>
+
+
+
+<!-- =========================================
      CATEGORÍAS
-========================= -->
+========================================= -->
 
 <nav class="categorias-nav">
 
     <div class="categorias-contenido">
 
+
         <a
             href="#menu"
-            class="categoria-boton activo"
+            class="categoria-btn activo"
         >
             Todo
         </a>
 
+
         <a
             href="#entradas"
-            class="categoria-boton"
+            class="categoria-btn"
         >
             Entradas
         </a>
 
+
         <a
             href="#principales"
-            class="categoria-boton"
+            class="categoria-btn"
         >
             Platos principales
         </a>
 
+
         <a
             href="#bebidas"
-            class="categoria-boton"
+            class="categoria-btn"
         >
             Bebidas
         </a>
 
+
         <a
             href="#postres"
-            class="categoria-boton"
+            class="categoria-btn"
         >
             Postres
         </a>
+
 
     </div>
 
@@ -607,329 +1664,606 @@
 
 
 
-<!-- =========================
+<!-- =========================================
      MENÚ
-========================= -->
+========================================= -->
 
-<section class="menu" id="menu">
+<main
+    class="menu"
+    id="menu"
+>
 
-    <div class="titulo-seccion">
 
-        <span>
-            NUESTRO MENÚ
+    <div class="menu-titulo">
+
+        <span class="mini-titulo">
+            MENÚ DIGITAL
         </span>
 
         <h2>
-            Elige tu favorito
+            Nuestro menú
         </h2>
 
     </div>
 
 
 
-    <!-- =========================
+    <!-- =====================================
          ENTRADAS
-    ========================= -->
+    ====================================== -->
 
-    <div
+    <section
         class="categoria"
         id="entradas"
     >
 
-        <h3>
-            Entradas
-        </h3>
+        <div class="categoria-header">
+
+            <h3>
+                Entradas
+            </h3>
+
+            <p>
+                Para comenzar
+            </p>
+
+        </div>
+
 
         <div class="productos">
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=700&q=80"
+                    alt="Croquetas"
+                >
 
-                    <h4>
-                        Croquetas de pollo
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$250
+                    <span class="etiqueta-producto">
+                        Popular
                     </span>
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Croquetas de pollo
+                        </h4>
+
+                        <span class="precio">
+                            RD$250
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Croquetas crujientes de pollo
+                        acompañadas de salsa especial
+                        de la casa.
+                    </p>
 
                 </div>
 
-                <p>
-                    Croquetas crujientes acompañadas
-                    de una salsa especial de la casa.
-                </p>
-
-            </div>
+            </article>
 
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=700&q=80"
+                    alt="Tostones"
+                >
 
-                    <h4>
-                        Tostones especiales
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$220
-                    </span>
+                    <div class="producto-superior">
+
+                        <h4>
+                            Tostones especiales
+                        </h4>
+
+                        <span class="precio">
+                            RD$220
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Tostones dorados y crujientes
+                        acompañados de salsa de ajo.
+                    </p>
 
                 </div>
 
-                <p>
-                    Tostones crujientes acompañados
-                    con salsa de ajo.
-                </p>
-
-            </div>
+            </article>
 
 
         </div>
 
-    </div>
+    </section>
 
 
 
-    <!-- =========================
+    <!-- =====================================
          PLATOS PRINCIPALES
-    ========================= -->
+    ====================================== -->
 
-    <div
+    <section
         class="categoria"
         id="principales"
     >
 
-        <h3>
-            Platos principales
-        </h3>
+        <div class="categoria-header">
+
+            <h3>
+                Platos principales
+            </h3>
+
+            <p>
+                Especialidades de la casa
+            </p>
+
+        </div>
+
 
         <div class="productos">
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+                    alt="Churrasco a la parrilla"
+                >
 
-                    <h4>
-                        Churrasco a la parrilla
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$850
+                    <span class="etiqueta-producto">
+                        Recomendado
                     </span>
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Churrasco a la parrilla
+                        </h4>
+
+                        <span class="precio">
+                            RD$850
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Churrasco preparado a la parrilla,
+                        acompañado de papas y vegetales.
+                    </p>
 
                 </div>
 
-                <p>
-                    Churrasco preparado a la parrilla,
-                    acompañado de papas y vegetales.
-                </p>
-
-            </div>
+            </article>
 
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1532550907401-a500c9a57435?auto=format&fit=crop&w=700&q=80"
+                    alt="Pollo en salsa"
+                >
 
-                    <h4>
-                        Pollo en salsa
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$520
-                    </span>
+                    <div class="producto-superior">
 
-                </div>
+                        <h4>
+                            Pollo en salsa cremosa
+                        </h4>
 
-                <p>
-                    Pechuga de pollo acompañada
-                    de nuestra salsa cremosa especial.
-                </p>
+                        <span class="precio">
+                            RD$520
+                        </span>
 
-            </div>
+                    </div>
 
-
-
-            <div class="producto">
-
-                <div class="producto-header">
-
-                    <h4>
-                        Pasta de camarones
-                    </h4>
-
-                    <span class="precio">
-                        RD$650
-                    </span>
+                    <p class="producto-descripcion">
+                        Pechuga de pollo acompañada
+                        de salsa cremosa especial
+                        y guarnición.
+                    </p>
 
                 </div>
 
-                <p>
-                    Pasta cremosa preparada
-                    con camarones y especias.
-                </p>
+            </article>
 
-            </div>
+
+
+            <article class="producto">
+
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=80"
+                    alt="Pasta de camarones"
+                >
+
+                <div class="producto-contenido">
+
+                    <span class="etiqueta-producto">
+                        Nuevo
+                    </span>
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Pasta de camarones
+                        </h4>
+
+                        <span class="precio">
+                            RD$650
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Pasta cremosa preparada con
+                        camarones, hierbas y especias.
+                    </p>
+
+                </div>
+
+            </article>
+
+
+
+            <article class="producto">
+
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=700&q=80"
+                    alt="Hamburguesa especial"
+                >
+
+                <div class="producto-contenido">
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Hamburguesa especial
+                        </h4>
+
+                        <span class="precio">
+                            RD$450
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Carne a la parrilla, queso,
+                        vegetales frescos y salsa
+                        especial de la casa.
+                    </p>
+
+                </div>
+
+            </article>
 
 
         </div>
 
-    </div>
+    </section>
 
 
 
-    <!-- =========================
+    <!-- =====================================
          BEBIDAS
-    ========================= -->
+    ====================================== -->
 
-    <div
+    <section
         class="categoria"
         id="bebidas"
     >
 
-        <h3>
-            Bebidas
-        </h3>
+        <div class="categoria-header">
+
+            <h3>
+                Bebidas
+            </h3>
+
+            <p>
+                Frescas y preparadas al momento
+            </p>
+
+        </div>
+
 
         <div class="productos">
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1523677011781-c91d1bbe2f9d?auto=format&fit=crop&w=700&q=80"
+                    alt="Limonada"
+                >
 
-                    <h4>
-                        Limonada natural
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$150
-                    </span>
+                    <div class="producto-superior">
 
-                </div>
+                        <h4>
+                            Limonada natural
+                        </h4>
 
-                <p>
-                    Limonada fresca preparada al momento.
-                </p>
+                        <span class="precio">
+                            RD$150
+                        </span>
 
-            </div>
+                    </div>
 
-
-
-            <div class="producto">
-
-                <div class="producto-header">
-
-                    <h4>
-                        Jugo natural
-                    </h4>
-
-                    <span class="precio">
-                        RD$175
-                    </span>
+                    <p class="producto-descripcion">
+                        Limonada fresca preparada
+                        al momento.
+                    </p>
 
                 </div>
 
-                <p>
-                    Consulta las frutas disponibles del día.
-                </p>
-
-            </div>
+            </article>
 
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1546173159-315724a31696?auto=format&fit=crop&w=700&q=80"
+                    alt="Jugo natural"
+                >
 
-                    <h4>
-                        Refresco
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$100
-                    </span>
+                    <div class="producto-superior">
+
+                        <h4>
+                            Jugo natural
+                        </h4>
+
+                        <span class="precio">
+                            RD$175
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Pregunta por las frutas
+                        disponibles del día.
+                    </p>
 
                 </div>
 
-                <p>
-                    Diferentes opciones disponibles.
-                </p>
+            </article>
 
-            </div>
+
+
+            <article class="producto">
+
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1581636625402-29b2a704ef13?auto=format&fit=crop&w=700&q=80"
+                    alt="Refresco"
+                >
+
+                <div class="producto-contenido">
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Refresco
+                        </h4>
+
+                        <span class="precio">
+                            RD$100
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Diferentes opciones disponibles.
+                    </p>
+
+                </div>
+
+            </article>
 
 
         </div>
 
-    </div>
+    </section>
 
 
 
-    <!-- =========================
+    <!-- =====================================
          POSTRES
-    ========================= -->
+    ====================================== -->
 
-    <div
+    <section
         class="categoria"
         id="postres"
     >
 
-        <h3>
-            Postres
-        </h3>
+        <div class="categoria-header">
+
+            <h3>
+                Postres
+            </h3>
+
+            <p>
+                Un final dulce
+            </p>
+
+        </div>
+
 
         <div class="productos">
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1565958011703-44f9829ba187?auto=format&fit=crop&w=700&q=80"
+                    alt="Cheesecake"
+                >
 
-                    <h4>
-                        Cheesecake
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$275
+                    <span class="etiqueta-producto">
+                        Favorito
                     </span>
+
+                    <div class="producto-superior">
+
+                        <h4>
+                            Cheesecake
+                        </h4>
+
+                        <span class="precio">
+                            RD$275
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Cheesecake cremoso con
+                        topping especial de la casa.
+                    </p>
 
                 </div>
 
-                <p>
-                    Cheesecake cremoso con topping
-                    especial de la casa.
-                </p>
-
-            </div>
+            </article>
 
 
 
-            <div class="producto">
+            <article class="producto">
 
-                <div class="producto-header">
+                <img
+                    class="producto-imagen"
+                    src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+                    alt="Brownie con helado"
+                >
 
-                    <h4>
-                        Brownie con helado
-                    </h4>
+                <div class="producto-contenido">
 
-                    <span class="precio">
-                        RD$300
-                    </span>
+                    <div class="producto-superior">
+
+                        <h4>
+                            Brownie con helado
+                        </h4>
+
+                        <span class="precio">
+                            RD$300
+                        </span>
+
+                    </div>
+
+                    <p class="producto-descripcion">
+                        Brownie de chocolate acompañado
+                        de helado de vainilla.
+                    </p>
 
                 </div>
 
-                <p>
-                    Brownie de chocolate acompañado
-                    de helado de vainilla.
-                </p>
+            </article>
 
-            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================
+     AVISO
+========================================= -->
+
+<section class="aviso">
+
+    <div class="aviso-card">
+
+        Algunos productos pueden estar sujetos a disponibilidad.
+        Los precios y opciones mostrados en este menú pueden
+        cambiar sin previo aviso.
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     PEDIDOS
+========================================= -->
+
+<section class="contacto">
+
+    <div class="contacto-contenido">
+
+        <span class="mini-titulo">
+            PEDIDOS Y CONTACTO
+        </span>
+
+        <h2>
+            ¿Ya sabes qué quieres pedir?
+        </h2>
+
+        <p>
+            Contacta directamente con el restaurante
+            para consultar disponibilidad, realizar tu
+            pedido o solicitar más información.
+        </p>
+
+
+        <div class="contacto-botones">
+
+
+            <a
+                href="https://wa.me/18090000000"
+                target="_blank"
+                rel="noopener"
+                class="boton boton-claro"
+            >
+                WhatsApp
+            </a>
+
+
+            <a
+                href="https://instagram.com/"
+                target="_blank"
+                rel="noopener"
+                class="boton boton-transparente"
+            >
+                Instagram
+            </a>
+
+
+            <a
+                href="https://maps.google.com/"
+                target="_blank"
+                rel="noopener"
+                class="boton boton-transparente"
+            >
+                Ver ubicación
+            </a>
 
 
         </div>
@@ -940,59 +2274,106 @@
 
 
 
-<!-- =========================
-     CONTACTO
-========================= -->
+<!-- =========================================
+     INFORMACIÓN FINAL
+========================================= -->
 
-<section class="contacto">
+<section class="datos">
 
-    <div class="contacto-contenido">
+    <div class="datos-grid">
 
-        <h2>
-            ¿Listo para ordenar?
-        </h2>
 
-        <p>
-            Escríbenos directamente por WhatsApp
-            o visita nuestras redes sociales.
-        </p>
+        <div class="dato">
 
-        <div class="contacto-botones">
+            <h4>
+                Horario
+            </h4>
+
+            <p>
+                Lunes a domingo
+                <br>
+                11:00 AM – 10:00 PM
+            </p>
+
+        </div>
+
+
+
+        <div class="dato">
+
+            <h4>
+                Ubicación
+            </h4>
 
             <a
-                href="https://wa.me/18090000000"
-                class="boton boton-principal"
+                href="https://maps.google.com/"
                 target="_blank"
+                rel="noopener"
             >
-                WhatsApp
+                Santo Domingo,
+                República Dominicana
             </a>
+
+        </div>
+
+
+
+        <div class="dato">
+
+            <h4>
+                Redes sociales
+            </h4>
 
             <a
                 href="https://instagram.com/"
-                class="boton boton-secundario"
                 target="_blank"
+                rel="noopener"
             >
                 Instagram
             </a>
 
         </div>
 
+
     </div>
 
 </section>
 
 
 
-<!-- =========================
-     XONTREX
-========================= -->
+<!-- =========================================
+     WHATSAPP FLOTANTE
+========================================= -->
 
-<footer class="xontrex">
+<a
+    href="https://wa.me/18090000000"
+    target="_blank"
+    rel="noopener"
+    class="whatsapp-flotante"
+    aria-label="Contactar por WhatsApp"
+>
+    WA
+</a>
+
+
+
+<!-- =========================================
+     XONTREX
+========================================= -->
+
+<footer>
 
     Espacio digital desarrollado por
+    <strong>Xontrex</strong>
 
-    <a href="https://xontrex.github.io/">
-        Xontrex
+    <br>
+
+    <a
+        href="https://xontrex.github.io/"
+        target="_blank"
+        rel="noopener"
+    >
+        Servicios digitales para negocios
     </a>
 
 </footer>
